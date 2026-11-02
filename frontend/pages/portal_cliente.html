@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi préstamo | Sistema de Préstamos</title>
+
+    <link rel="stylesheet" href="../css/portal_cliente.css?v=7">
+    <link rel="stylesheet" href="../css/tema.css?v=17">
+
+</head>
+
+<body>
+
+    <div class="cliente-app">
+
+        <!-- =====================================================
+         SIDEBAR CLIENTE
+    ====================================================== -->
+
+        <aside class="cliente-sidebar">
+
+            <div class="cliente-logo">
+
+                <div class="logo-icon">
+                    $
+                </div>
+
+                <div>
+                    <h2>Mi préstamo</h2>
+                    <span>Portal del cliente</span>
+                </div>
+
+            </div>
+
+
+            <nav class="cliente-menu">
+
+                <p class="menu-titulo">
+                    MI CUENTA
+                </p>
+
+
+                <button type="button" class="menu-item active" data-seccion="resumen">
+                    <span>📊</span>
+                    Mi resumen
+                </button>
+
+
+                <button type="button" class="menu-item" data-seccion="prestamo">
+                    <span>💰</span>
+                    Mi préstamo
+                </button>
+
+
+                <button type="button" class="menu-item" data-seccion="cuotas">
+                    <span>📅</span>
+                    Mis cuotas
+                </button>
+
+
+                <button type="button" class="menu-item" data-seccion="pagos">
+                    <span>💵</span>
+                    Mis pagos
+                </button>
+
+                <button type="button" class="menu-item" data-seccion="mensajes">
+                    <span>📩</span>
+
+                    Mis mensajes
+
+                    <span id="contadorMensajes" class="contador-mensajes" style="display: none;">
+                        0
+                    </span>
+                </button>
+
+                <button type="button" id="btnEstadoCuenta" class="menu-item">
+                    <span>📄</span>
+                    Descargar estado de cuenta
+                </button>
+
+            </nav>
+
+
+        </aside>
+
+
+        <!-- =====================================================
+         CONTENIDO
+    ====================================================== -->
+
+        <main class="cliente-main">
+
+            <!-- =================================================
+             HEADER
+        ================================================== -->
+
+            <header class="cliente-topbar">
+
+                <div>
+
+                    <h1 id="tituloPagina">
+                        Mi resumen
+                    </h1>
+
+                    <p id="subtituloPagina">
+                        Consulta la información de tu préstamo.
+                    </p>
+
+                </div>
+
+
+                <div class="cliente-usuario cliente-usuario-menu" id="clienteUsuarioMenu">
+
+                    <button type="button" class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <div class="cliente-avatar" id="avatarCliente">
+                        C
+                    </div>
+
+                    <div class="cliente-usuario-info">
+
+                        <strong id="nombreCliente">
+                            Cargando...
+                        </strong>
+
+                        <span>
+                            Cliente
+                        </span>
+
+                    </div>
+
+                    <span class="cliente-menu-flecha">▼</span>
+
+                    <div class="cliente-dropdown" id="clienteDropdown">
+
+                        <button type="button" id="btnMiPerfil">
+                            👤 Mi perfil
+                        </button>
+
+                        <button type="button" id="btnCambiarPassword">
+                            🔐 Cambiar contraseña
+                        </button>
+
+                        <button type="button" id="btnCerrarSesionPerfil">
+                            🚪 Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <div class="cliente-contenido">
+
+
+                <!-- =================================================
+                 SELECTOR DE PRÉSTAMO
+            ================================================== -->
+
+                <section id="contenedorSelectorPrestamo" class="selector-prestamo-card">
+
+                    <div>
+
+                        <span class="selector-label">
+                            Préstamo seleccionado
+                        </span>
+
+                        <strong id="textoPrestamoSeleccionado">
+                            Cargando...
+                        </strong>
+
+                    </div>
+
+
+                    <select id="selectorPrestamo">
+
+                        <option value="">
+                            Cargando préstamos...
+                        </option>
+
+                    </select>
+
+                </section>
+
+
+                <!-- =================================================
+                 SECCIÓN RESUMEN
+            ================================================== -->
+
+                <section id="seccionResumen" class="seccion-cliente active">
+
+                    <!-- CARDS -->
+
+                    <div class="resumen-grid">
+
+
+                        <div class="resumen-card">
+
+                            <div class="resumen-icon">
+                                💳
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Total del préstamo
+                                </span>
+
+                                <strong id="resumenTotalPrestamo">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="resumen-card">
+
+                            <div class="resumen-icon">
+                                ✅
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Total pagado
+                                </span>
+
+                                <strong id="resumenTotalPagado">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="resumen-card">
+
+                            <div class="resumen-icon">
+                                ⏳
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Saldo pendiente
+                                </span>
+
+                                <strong id="resumenSaldoPendiente">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="resumen-card">
+
+                            <div class="resumen-icon">
+                                📅
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Próximo pago
+                                </span>
+
+                                <strong id="resumenProximoPago">
+                                    -
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROGRESO -->
+
+                    <div class="panel-cliente progreso-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Progreso del préstamo
+                                </h2>
+
+                                <p id="textoPagosRestantes">
+                                    Cargando información...
+                                </p>
+
+                            </div>
+
+
+                            <strong id="porcentajePagado" class="porcentaje-pagado">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="barra-progreso">
+
+                            <div id="barraProgresoValor" class="barra-progreso-valor"></div>
+
+                        </div>
+
+
+                        <div class="progreso-datos">
+
+                            <div>
+
+                                <span>
+                                    Cuotas pagadas
+                                </span>
+
+                                <strong id="resumenCuotasPagadas">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Cuotas pendientes
+                                </span>
+
+                                <strong id="resumenCuotasPendientes">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Cuotas totales
+                                </span>
+
+                                <strong id="resumenCuotasTotales">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Fecha final
+                                </span>
+
+                                <strong id="resumenFechaFinal">
+                                    -
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRÓXIMA CUOTA -->
+
+                    <div class="panel-cliente">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Próxima cuota
+                                </h2>
+
+                                <p>
+                                    Información de tu siguiente pago.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="proximaCuotaContenido" class="proxima-cuota">
+
+                            <div>
+
+                                <span>
+                                    Cuota
+                                </span>
+
+                                <strong id="proximaCuotaNumero">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Fecha de vencimiento
+                                </span>
+
+                                <strong id="proximaCuotaFecha">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Monto pendiente
+                                </span>
+
+                                <strong id="proximaCuotaMonto">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 SECCIÓN PRÉSTAMO
+            ================================================== -->
+
+                <section id="seccionPrestamo" class="seccion-cliente">
+
+                    <div class="panel-cliente">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Detalles de mi préstamo
+                                </h2>
+
+                                <p>
+                                    Información general del financiamiento.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detalle-grid">
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Número de préstamo
+                                </span>
+
+                                <strong id="detalleIdPrestamo">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Tipo de préstamo
+                                </span>
+
+                                <strong id="detalleTipoPrestamo">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Estado
+                                </span>
+
+                                <strong id="detalleEstadoPrestamo">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Monto solicitado
+                                </span>
+
+                                <strong id="detalleMontoSolicitado">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Monto aprobado
+                                </span>
+
+                                <strong id="detalleMontoAprobado">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Tasa de interés
+                                </span>
+
+                                <strong id="detalleTasaInteres">
+                                    0%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Total de intereses
+                                </span>
+
+                                <strong id="detalleIntereses">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Total a pagar
+                                </span>
+
+                                <strong id="detalleTotalPagar">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Total pagado
+                                </span>
+
+                                <strong id="detalleTotalPagado">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item destacado">
+
+                                <span>
+                                    Saldo pendiente
+                                </span>
+
+                                <strong id="detalleSaldoPendiente">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Plazo
+                                </span>
+
+                                <strong id="detallePlazo">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Frecuencia de pago
+                                </span>
+
+                                <strong id="detalleFrecuencia">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Número de cuotas
+                                </span>
+
+                                <strong id="detalleNumeroCuotas">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Monto por cuota
+                                </span>
+
+                                <strong id="detalleMontoCuota">
+                                    $0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Fecha de desembolso
+                                </span>
+
+                                <strong id="detalleFechaDesembolso">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Inicio de pagos
+                                </span>
+
+                                <strong id="detalleInicioPago">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detalle-item">
+
+                                <span>
+                                    Fecha de vencimiento
+                                </span>
+
+                                <strong id="detalleFechaVencimiento">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 SECCIÓN CUOTAS
+            ================================================== -->
+
+                <section id="seccionCuotas" class="seccion-cliente">
+
+                    <div class="panel-cliente">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Calendario de cuotas
+                                </h2>
+
+                                <p>
+                                    Consulta todos tus pagos realizados y pendientes.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="tabla-wrapper">
+
+                            <table class="tabla-cliente">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Cuota
+                                        </th>
+
+                                        <th>
+                                            Vencimiento
+                                        </th>
+
+                                        <th>
+                                            Capital
+                                        </th>
+
+                                        <th>
+                                            Interés
+                                        </th>
+
+                                        <th>
+                                            Total
+                                        </th>
+
+                                        <th>
+                                            Pagado
+                                        </th>
+
+                                        <th>
+                                            Pendiente
+                                        </th>
+
+                                        <th>
+                                            Estado
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="tablaCuotasBody">
+
+                                    <tr>
+
+                                        <td colspan="8" class="tabla-mensaje">
+                                            Cargando cuotas...
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 SECCIÓN PAGOS
+            ================================================== -->
+
+                <section id="seccionPagos" class="seccion-cliente">
+
+                    <div class="panel-cliente">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h2>
+                                    Historial de pagos
+                                </h2>
+
+                                <p>
+                                    Consulta los pagos registrados en tu préstamo.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="tabla-wrapper">
+
+                            <table class="tabla-cliente">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Pago
+                                        </th>
+
+                                        <th>
+                                            Fecha
+                                        </th>
+
+                                        <th>
+                                            Cuota
+                                        </th>
+
+                                        <th>
+                                            Método
+                                        </th>
+
+                                        <th>
+                                            Monto
+                                        </th>
+
+                                        <th>
+                                            Referencia
+                                        </th>
+
+                                        <th>
+                                            Comprobante
+                                        </th>
+
+                                        <th>
+                                            Estado
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="tablaPagosBody">
+
+                                    <tr>
+
+                                        <td colspan="8" class="tabla-mensaje">
+                                            Cargando pagos...
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 SIN PRÉSTAMOS
+            ================================================== -->
+
+                <section id="seccionMensajes" class="seccion-cliente">
+
+                    <div class="panel-cliente">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Mis mensajes</h2>
+
+                                <p>
+                                    Consulta los avisos y comunicaciones enviados por el sistema.
+                                </p>
+                            </div>
+
+
+                            <div class="mensajes-resumen-cliente">
+
+                                <span>
+                                    Sin leer
+                                </span>
+
+                                <strong id="totalMensajesSinLeer">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="listaMensajesCliente" class="lista-mensajes-cliente">
+
+                            <div class="mensaje-vacio">
+
+                                <div>
+                                    📩
+                                </div>
+
+                                <strong>
+                                    Cargando mensajes...
+                                </strong>
+
+                                <p>
+                                    Espera un momento.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- =========================================================
+     MODAL MI PERFIL
+========================================================= -->
+
+                <div class="modal-perfil" id="modalPerfil">
+
+                    <div class="modal-perfil-contenido">
+
+                        <div class="modal-perfil-header">
+
+                            <div>
+                                <h2>Mi perfil</h2>
+                                <p>Consulta la información de tu cuenta.</p>
+                            </div>
+
+                            <button type="button" id="btnCerrarPerfil" class="btn-cerrar-perfil">
+                                ×
+                            </button>
+
+                        </div>
+
+                        <div class="perfil-avatar-grande" id="perfilAvatar">
+                            C
+                        </div>
+
+                        <div class="perfil-nombre">
+
+                            <strong id="perfilNombre">
+                                -
+                            </strong>
+
+                            <span>
+                                Cliente
+                            </span>
+
+                        </div>
+
+                        <div class="perfil-datos">
+
+                            <div class="perfil-dato">
+                                <span>📧 Correo electrónico</span>
+                                <strong id="perfilCorreo">-</strong>
+                            </div>
+
+                            <div class="perfil-dato">
+                                <span>📱 Teléfono</span>
+                                <strong id="perfilTelefono">-</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================================
+     MODAL CAMBIAR CONTRASEÑA
+========================================================= -->
+
+                <div class="modal-perfil" id="modalCambiarPassword">
+
+                    <div class="modal-perfil-contenido">
+
+                        <div class="modal-perfil-header">
+
+                            <div>
+                                <h2>Cambiar contraseña</h2>
+                                <p>Actualiza la contraseña de tu cuenta.</p>
+                            </div>
+
+                            <button type="button" id="btnCerrarCambiarPassword" class="btn-cerrar-perfil">
+                                ×
+                            </button>
+
+                        </div>
+
+                        <form id="formCambiarPassword">
+
+                            <div class="perfil-dato">
+
+                                <span>
+                                    Contraseña actual
+                                </span>
+
+                                <input type="password" id="passwordActual" autocomplete="current-password" required>
+
+                            </div>
+
+
+                            <div class="perfil-dato">
+
+                                <span>
+                                    Nueva contraseña
+                                </span>
+
+                                <input type="password" id="passwordNueva" autocomplete="new-password" minlength="6"
+                                    required>
+
+                            </div>
+
+
+                            <div class="perfil-dato">
+
+                                <span>
+                                    Confirmar nueva contraseña
+                                </span>
+
+                                <input type="password" id="passwordConfirmar" autocomplete="new-password" minlength="6"
+                                    required>
+
+                            </div>
+
+
+                            <div id="mensajeCambiarPassword"></div>
+
+
+                            <button type="submit" class="btn-guardar-password">
+                                Guardar nueva contraseña
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================================
+     MENSAJES DEL PORTAL
+========================================================= -->
+
+                <div id="mensajePortal" class="mensaje-portal"></div>
+
+
+                <div id="mensajePortal" class="mensaje-portal"></div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+   <script src="/sistema_prestamos/frontend/js/tema.js?v=5"></script>
+    <script src="../js/portal_cliente.js?v=9"></script>
+
+</body>
+
+</html>

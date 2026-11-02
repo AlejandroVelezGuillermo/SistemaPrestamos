@@ -1,0 +1,2142 @@
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #f5f7fa;
+    color: #172033;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ============================================================
+   ESTRUCTURA GENERAL
+============================================================ */
+
+.app-layout {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #111b31;
+
+    color: #ffffff;
+
+    overflow-y: auto;
+
+    z-index: 1000;
+}
+
+
+/* ============================================================
+   LOGO / MARCA
+============================================================ */
+
+.sidebar-brand {
+    min-height: 105px;
+
+    padding: 22px 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #2f6fed;
+
+    color: #ffffff;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.sidebar-brand > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-width: 0;
+}
+
+.sidebar-brand h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+.sidebar-brand span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #9eabc0;
+
+    font-size: 11px;
+
+    line-height: 1.2;
+}
+
+
+/* ============================================================
+   MENÚ
+============================================================ */
+
+.sidebar-menu {
+    padding: 18px 10px 30px;
+}
+
+.menu-section {
+    margin-bottom: 17px;
+}
+
+.menu-title {
+    display: block;
+
+    padding: 0 10px;
+
+    margin-bottom: 8px;
+
+    color: #7790b3;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+}
+
+.menu-item {
+    width: 100%;
+
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 10px 12px;
+
+    margin-bottom: 4px;
+
+    color: #e8edf7;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.menu-item span {
+    width: 18px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.menu-item.active {
+    background: #2f6fed;
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   CONTENIDO PRINCIPAL
+============================================================ */
+
+.main-content {
+    width: calc(100% - 250px);
+
+    min-height: 100vh;
+
+    margin-left: 250px;
+
+    background: #f5f7fa;
+}
+
+
+/* ============================================================
+   TOPBAR
+============================================================ */
+
+.topbar {
+    width: 100%;
+    height: 110px;
+
+    padding: 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e4e9f0;
+}
+
+.topbar > div:first-child {
+    min-width: 0;
+}
+
+.topbar h1 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.topbar p {
+    margin: 6px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   USUARIO SUPERIOR
+============================================================ */
+
+.user-info {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2f6fed;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* MUY IMPORTANTE:
+   Nombre arriba y rol abajo */
+
+.user-info > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 2px;
+}
+
+#nombreUsuario {
+    display: block;
+
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+#rolUsuario {
+    display: block;
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+    font-weight: 400;
+
+    line-height: 1.2;
+}
+
+
+/* ============================================================
+   CONTENIDO MENSAJES
+============================================================ */
+
+.mensajes-content {
+    width: 100%;
+
+    padding: 28px 30px 40px;
+}
+
+
+/* ============================================================
+   ENCABEZADO INTERNO
+============================================================ */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+}
+
+.page-header h2 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.page-header p {
+    margin: 5px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   ESTADÍSTICAS
+============================================================ */
+
+.mensajes-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    min-height: 90px;
+
+    padding: 18px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e7ef;
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.stat-icon {
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #edf4ff;
+
+    font-size: 20px;
+}
+
+.stat-card > div:last-child {
+    min-width: 0;
+}
+
+.stat-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.stat-card strong {
+    display: block;
+
+    color: #111827;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   PANELES
+============================================================ */
+
+.panel {
+    width: 100%;
+
+    margin-bottom: 24px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e7ef;
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.panel-header {
+    min-height: 76px;
+
+    padding: 18px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-bottom: 1px solid #e7ebf1;
+}
+
+.panel-header h3 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.panel-header p {
+    margin: 4px 0 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   BUSCADOR
+============================================================ */
+
+.buscador-container {
+    position: relative;
+
+    width: 310px;
+
+    flex-shrink: 0;
+}
+
+.buscador-icon {
+    position: absolute;
+
+    top: 50%;
+    left: 13px;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+
+    font-size: 14px;
+}
+
+.buscador-container input {
+    width: 100%;
+    height: 40px;
+
+    padding: 0 13px 0 40px;
+
+    border: 1px solid #d6dde8;
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #1f2937;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.buscador-container input:focus {
+    border-color: #2f6fed;
+
+    box-shadow:
+        0 0 0 3px rgba(47, 111, 237, 0.1);
+}
+
+
+/* ============================================================
+   TABLAS
+============================================================ */
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.clientes-table,
+.mensajes-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.clientes-table thead,
+.mensajes-table thead {
+    background: #f8fafc;
+}
+
+.clientes-table th,
+.mensajes-table th {
+    padding: 13px 18px;
+
+    text-align: left;
+
+    color: #64748b;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.4px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.clientes-table td,
+.mensajes-table td {
+    padding: 14px 18px;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    vertical-align: middle;
+
+    border-top: 1px solid #edf0f4;
+}
+
+.clientes-table tbody tr:hover,
+.mensajes-table tbody tr:hover {
+    background: #fafcff;
+}
+
+.table-message {
+    padding: 32px !important;
+
+    color: #8490a3 !important;
+
+    text-align: center !important;
+}
+
+
+/* ============================================================
+   ANCHOS TABLA CLIENTES
+============================================================ */
+
+.clientes-table th:nth-child(1),
+.clientes-table td:nth-child(1) {
+    width: 27%;
+}
+
+.clientes-table th:nth-child(2),
+.clientes-table td:nth-child(2) {
+    width: 25%;
+}
+
+.clientes-table th:nth-child(3),
+.clientes-table td:nth-child(3) {
+    width: 18%;
+}
+
+.clientes-table th:nth-child(4),
+.clientes-table td:nth-child(4) {
+    width: 13%;
+}
+
+.clientes-table th:nth-child(5),
+.clientes-table td:nth-child(5) {
+    width: 17%;
+}
+
+
+/* ============================================================
+   ANCHOS TABLA MENSAJES
+============================================================ */
+
+.mensajes-table th:nth-child(1),
+.mensajes-table td:nth-child(1) {
+    width: 23%;
+}
+
+.mensajes-table th:nth-child(2),
+.mensajes-table td:nth-child(2) {
+    width: 22%;
+}
+
+.mensajes-table th:nth-child(3),
+.mensajes-table td:nth-child(3) {
+    width: 18%;
+}
+
+.mensajes-table th:nth-child(4),
+.mensajes-table td:nth-child(4) {
+    width: 17%;
+}
+
+.mensajes-table th:nth-child(5),
+.mensajes-table td:nth-child(5) {
+    width: 10%;
+}
+
+.mensajes-table th:nth-child(6),
+.mensajes-table td:nth-child(6) {
+    width: 10%;
+}
+
+
+/* ============================================================
+   INFORMACIÓN CLIENTE
+============================================================ */
+
+.cliente-info {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+}
+
+.cliente-avatar-small {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eaf2ff;
+    color: #2f6fed;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.cliente-info > div:last-child {
+    min-width: 0;
+}
+
+.cliente-info strong {
+    display: block;
+
+    color: #111827;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cliente-info small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #8a94a6;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   BADGES
+============================================================ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.badge-activo {
+    background: #e8f8ee;
+    color: #16874c;
+}
+
+.badge-leido {
+    background: #eaf2ff;
+    color: #2563eb;
+}
+
+.badge-no-leido {
+    background: #fff3dc;
+    color: #a86000;
+}
+
+
+/* ============================================================
+   BOTONES
+============================================================ */
+
+.btn-primary,
+.btn-secondary,
+.btn-table {
+    border: none;
+
+    font-family: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.btn-primary {
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    background: #2f6fed;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #245ed1;
+}
+
+.btn-primary:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.btn-secondary {
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    background: #eef1f5;
+    color: #374151;
+}
+
+.btn-secondary:hover {
+    background: #e2e6ec;
+}
+
+.btn-table {
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+}
+
+.btn-enviar {
+    background: #edf4ff;
+    color: #2563eb;
+}
+
+.btn-enviar:hover {
+    background: #dce9ff;
+}
+
+.btn-ver {
+    background: #eef1f5;
+    color: #374151;
+}
+
+.btn-ver:hover {
+    background: #e1e5eb;
+}
+
+
+/* ============================================================
+   MODALES
+============================================================ */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.52);
+
+    backdrop-filter: blur(2px);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-container {
+    width: 100%;
+    max-width: 620px;
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.22);
+}
+
+.modal-header {
+    padding: 22px 24px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-bottom: 1px solid #e9edf3;
+}
+
+.modal-header h2 {
+    margin: 5px 0 0;
+
+    color: #111827;
+
+    font-size: 21px;
+}
+
+.modal-label {
+    color: #2f6fed;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.modal-close {
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #f0f2f6;
+    color: #475569;
+
+    cursor: pointer;
+
+    font-size: 22px;
+}
+
+.modal-close:hover {
+    background: #e2e6ec;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+
+/* ============================================================
+   DESTINATARIO
+============================================================ */
+
+.destinatario-card {
+    margin-bottom: 22px;
+
+    padding: 14px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e4e9f0;
+    border-radius: 10px;
+}
+
+.cliente-avatar {
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2f6fed;
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.destinatario-card span {
+    display: block;
+
+    color: #7c8799;
+
+    font-size: 11px;
+}
+
+.destinatario-card strong {
+    display: block;
+
+    margin: 2px 0;
+
+    color: #111827;
+
+    font-size: 14px;
+}
+
+.destinatario-card small {
+    display: block;
+
+    color: #7c8799;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   FORMULARIO
+============================================================ */
+
+.form-group {
+    margin-bottom: 19px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #374151;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid #d6dde8;
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #1f2937;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.form-group textarea {
+    min-height: 145px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2f6fed;
+
+    box-shadow:
+        0 0 0 3px rgba(47, 111, 237, 0.1);
+}
+
+.campo-info {
+    margin-top: 6px;
+
+    display: flex;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.campo-info small {
+    color: #8a94a6;
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   ALERTAS
+============================================================ */
+
+.form-alert {
+    display: none;
+
+    margin-bottom: 18px;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+}
+
+.form-alert.error {
+    display: block;
+
+    background: #fff0f0;
+    color: #b42318;
+
+    border: 1px solid #ffd1d1;
+}
+
+.form-alert.success {
+    display: block;
+
+    background: #ecfdf3;
+    color: #16874c;
+
+    border: 1px solid #c9f0d7;
+}
+
+
+/* ============================================================
+   ACCIONES MODAL
+============================================================ */
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+}
+
+
+/* ============================================================
+   DETALLE MENSAJE
+============================================================ */
+
+.modal-detalle {
+    max-width: 700px;
+}
+
+.detalle-meta {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 13px;
+
+    margin-bottom: 22px;
+}
+
+.detalle-meta div {
+    padding: 12px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e7ebf1;
+    border-radius: 9px;
+}
+
+.detalle-meta span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #8a94a6;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+.detalle-meta strong {
+    display: block;
+
+    color: #111827;
+
+    font-size: 13px;
+
+    overflow-wrap: anywhere;
+}
+
+.detalle-mensaje {
+    padding-top: 19px;
+
+    border-top: 1px solid #e7ebf1;
+}
+
+.detalle-mensaje > span {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #64748b;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+.detalle-mensaje p {
+    margin: 0;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1200px) {
+
+    .mensajes-stats {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+
+    .mensajes-content {
+        padding: 22px;
+    }
+
+    .topbar {
+        padding: 0 22px;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .buscador-container {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .topbar {
+        height: auto;
+
+        padding: 18px;
+
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mensajes-content {
+        padding: 18px;
+    }
+
+    .mensajes-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .detalle-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+
+}
+
+.user-info-menu .user-dropdown {
+    display: none;
+}
+
+.user-info-menu.activo .user-dropdown {
+    display: block;
+}
+
+/* ============================================================
+   CONVERSACIÓN ADMINISTRADOR / GERENTE
+============================================================ */
+
+.detalle-conversacion {
+    margin-top: 22px;
+    padding-top: 20px;
+
+    border-top: 1px solid #e7ebf1;
+}
+
+
+/* ============================================================
+   TÍTULO DE CONVERSACIÓN
+============================================================ */
+
+.detalle-conversacion-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 14px;
+}
+
+.detalle-conversacion-titulo strong {
+    display: block;
+
+    color: #111827;
+
+    font-size: 14px;
+}
+
+.detalle-conversacion-titulo p {
+    margin: 3px 0 0;
+
+    color: #8a94a6;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   LISTA DE RESPUESTAS
+============================================================ */
+
+.detalle-conversacion-lista {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    max-height: 330px;
+
+    overflow-y: auto;
+
+    padding: 15px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e7ebf1;
+    border-radius: 12px;
+
+    scroll-behavior: smooth;
+}
+
+
+/* ============================================================
+   SCROLL DE CONVERSACIÓN
+============================================================ */
+
+.detalle-conversacion-lista::-webkit-scrollbar {
+    width: 7px;
+}
+
+.detalle-conversacion-lista::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.detalle-conversacion-lista::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 10px;
+}
+
+
+/* ============================================================
+   CONVERSACIÓN VACÍA / ERROR
+============================================================ */
+
+.conversacion-vacia,
+.conversacion-error {
+    width: 100%;
+
+    padding: 18px;
+
+    text-align: center;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+}
+
+.conversacion-vacia {
+    background: #ffffff;
+
+    border: 1px dashed #cbd5e1;
+
+    color: #64748b;
+}
+
+.conversacion-error {
+    background: #fff0f0;
+
+    border: 1px solid #ffd1d1;
+
+    color: #b42318;
+}
+
+
+/* ============================================================
+   BURBUJAS
+============================================================ */
+
+.respuesta-admin {
+    width: fit-content;
+    max-width: 75%;
+
+    padding: 11px 14px;
+
+    border-radius: 13px;
+
+    word-break: break-word;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   RESPUESTA DEL CLIENTE
+============================================================ */
+
+.respuesta-admin-cliente {
+    align-self: flex-start;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe3ee;
+
+    border-bottom-left-radius: 4px;
+}
+
+
+/* ============================================================
+   RESPUESTA DE ADMINISTRADOR / GERENTE
+============================================================ */
+
+.respuesta-admin-personal {
+    align-self: flex-end;
+
+    background: #2f6fed;
+
+    color: #ffffff;
+
+    border-bottom-right-radius: 4px;
+}
+
+
+/* ============================================================
+   CABECERA DE RESPUESTAS
+============================================================ */
+
+.respuesta-admin-header {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 6px;
+}
+
+.respuesta-admin-header strong {
+    font-size: 12px;
+}
+
+.respuesta-admin-header span {
+    padding: 2px 7px;
+
+    border-radius: 999px;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+/* CLIENTE */
+
+.respuesta-admin-cliente
+.respuesta-admin-header strong {
+    color: #111827;
+}
+
+.respuesta-admin-cliente
+.respuesta-admin-header span {
+    background: #eaf2ff;
+
+    color: #2563eb;
+}
+
+
+/* ADMINISTRADOR / GERENTE */
+
+.respuesta-admin-personal
+.respuesta-admin-header strong {
+    color: #ffffff;
+}
+
+.respuesta-admin-personal
+.respuesta-admin-header span {
+    background: rgba(255, 255, 255, 0.18);
+
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   TEXTO
+============================================================ */
+
+.respuesta-admin-texto {
+    font-size: 13px;
+
+    white-space: pre-wrap;
+}
+
+.respuesta-admin-cliente
+.respuesta-admin-texto {
+    color: #374151;
+}
+
+.respuesta-admin-personal
+.respuesta-admin-texto {
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   FECHA
+============================================================ */
+
+.respuesta-admin small {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 10px;
+}
+
+.respuesta-admin-cliente small {
+    color: #94a3b8;
+}
+
+.respuesta-admin-personal small {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* ============================================================
+   FORMULARIO RESPONDER
+============================================================ */
+
+.form-responder-mensaje {
+    margin-top: 18px;
+
+    padding: 16px;
+
+    background: #ffffff;
+
+    border: 1px solid #e7ebf1;
+    border-radius: 12px;
+}
+
+.form-responder-mensaje label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #374151;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   TEXTAREA RESPONDER
+============================================================ */
+
+.form-responder-mensaje textarea {
+    width: 100%;
+
+    min-height: 95px;
+
+    resize: vertical;
+
+    padding: 12px 13px;
+
+    border: 1px solid #d6dce5;
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #111827;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-responder-mensaje textarea:focus {
+    border-color: #2f6fed;
+
+    box-shadow:
+        0 0 0 3px rgba(47, 111, 237, 0.10);
+}
+
+.form-responder-mensaje textarea::placeholder {
+    color: #9ca3af;
+}
+
+
+/* ============================================================
+   ESTADO DE RESPUESTA
+============================================================ */
+
+.estado-respuesta-mensaje {
+    min-height: 17px;
+
+    margin-top: 8px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   BOTÓN DEL FORMULARIO
+============================================================ */
+
+.form-responder-mensaje .modal-actions {
+    margin-top: 8px;
+}
+
+#btnEnviarRespuesta {
+    min-width: 155px;
+}
+
+
+/* ============================================================
+   MEJORAR MODAL DE CONVERSACIÓN
+============================================================ */
+
+#modalDetalle .modal-detalle {
+    max-width: 760px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 650px) {
+
+    .detalle-conversacion-lista {
+        max-height: 280px;
+
+        padding: 12px;
+    }
+
+    .respuesta-admin {
+        max-width: 88%;
+    }
+
+    .form-responder-mensaje {
+        padding: 13px;
+    }
+
+    #btnEnviarRespuesta {
+        width: 100%;
+
+        min-width: 0;
+    }
+}
+
+/* ============================================================
+   RESPUESTAS NUEVAS
+   ============================================================ */
+
+.acciones-mensaje {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge-respuesta-nueva {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #fee2e2;
+    color: #b91c1c;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+/* ============================================================
+   CONVERSACIÓN - ESTILO LIMPIO
+   ============================================================ */
+
+#detalleConversacion {
+    margin-top: 22px;
+}
+
+
+/* ============================================================
+   CABECERA
+   ============================================================ */
+
+#detalleConversacion .detalle-conversacion-titulo {
+    margin-bottom: 18px;
+}
+
+#detalleConversacion .detalle-conversacion-titulo strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #f8fafc;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#detalleConversacion .detalle-conversacion-titulo p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   ÁREA DE CONVERSACIÓN
+   ============================================================ */
+
+#detalleConversacion.detalle-conversacion-lista {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+
+    width: 100%;
+    max-height: 370px;
+
+    padding: 18px 4px;
+
+    overflow-y: auto;
+
+    background: transparent;
+
+    border: none;
+
+    scroll-behavior: smooth;
+}
+
+
+/* ============================================================
+   MENSAJE GENERAL
+   ============================================================ */
+
+#detalleConversacion .respuesta-admin {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    width: auto;
+    max-width: 70%;
+
+    padding: 12px 15px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.12);
+
+    word-break: break-word;
+}
+
+
+/* ============================================================
+   CLIENTE
+   ============================================================ */
+
+#detalleConversacion .respuesta-admin-cliente {
+    align-self: flex-start;
+
+    background: #283750;
+
+    border: 1px solid #3a4b66;
+
+    border-bottom-left-radius: 4px;
+}
+
+
+/* ============================================================
+   ADMINISTRADOR / GERENTE
+   ============================================================ */
+
+#detalleConversacion .respuesta-admin-personal {
+    align-self: flex-end;
+
+    background: #2563eb;
+
+    border: 1px solid #3b82f6;
+
+    border-bottom-right-radius: 4px;
+}
+
+
+/* ============================================================
+   NOMBRE Y ROL
+   ============================================================ */
+
+#detalleConversacion .respuesta-admin-header {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 7px;
+}
+
+#detalleConversacion .respuesta-admin-header strong {
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   ETIQUETA DEL ROL
+   ============================================================ */
+
+#detalleConversacion .respuesta-admin-header span {
+    padding: 2px 6px;
+
+    border-radius: 5px;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    text-transform: uppercase;
+}
+
+
+/* CLIENTE */
+
+#detalleConversacion
+.respuesta-admin-cliente
+.respuesta-admin-header span {
+
+    background: rgba(96, 165, 250, 0.15);
+
+    color: #93c5fd;
+}
+
+
+/* ADMINISTRADOR */
+
+#detalleConversacion
+.respuesta-admin-personal
+.respuesta-admin-header span {
+
+    background: rgba(255, 255, 255, 0.16);
+
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   TEXTO
+   ============================================================ */
+
+#detalleConversacion .respuesta-admin-texto {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+
+    white-space: pre-wrap;
+}
+
+
+/* ============================================================
+   FECHA
+   ============================================================ */
+
+#detalleConversacion .respuesta-admin small {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 9px;
+
+    text-align: right;
+}
+
+#detalleConversacion .respuesta-admin-cliente small {
+    color: #94a3b8;
+}
+
+#detalleConversacion .respuesta-admin-personal small {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* ============================================================
+   FORMULARIO DE RESPUESTA
+   ============================================================ */
+
+#formResponderMensaje {
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    background: transparent;
+
+    border: none;
+    border-top: 1px solid #334155;
+
+    border-radius: 0;
+}
+
+#formResponderMensaje label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* TEXTAREA */
+
+#textoRespuestaMensaje {
+    width: 100%;
+
+    min-height: 90px;
+
+    padding: 13px 14px;
+
+    resize: vertical;
+
+    background: #111b31;
+
+    color: #f8fafc;
+
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#textoRespuestaMensaje:hover {
+    border-color: #475569;
+}
+
+#textoRespuestaMensaje:focus {
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+#textoRespuestaMensaje::placeholder {
+    color: #64748b;
+}
+
+
+/* ============================================================
+   BOTÓN ENVIAR
+   ============================================================ */
+
+#formResponderMensaje .modal-actions {
+    margin-top: 12px;
+
+    display: flex;
+
+    justify-content: flex-end;
+}
+
+#btnEnviarRespuesta {
+    min-width: 150px;
+
+    padding: 10px 17px;
+
+    border-radius: 8px;
+}
+
+
+/* ============================================================
+   SCROLL
+   ============================================================ */
+
+#detalleConversacion
+.detalle-conversacion-lista::-webkit-scrollbar {
+
+    width: 6px;
+}
+
+#detalleConversacion
+.detalle-conversacion-lista::-webkit-scrollbar-track {
+
+    background: transparent;
+}
+
+#detalleConversacion
+.detalle-conversacion-lista::-webkit-scrollbar-thumb {
+
+    background: #475569;
+
+    border-radius: 20px;
+}
+
+
+/* ============================================================
+   MÓVIL
+   ============================================================ */
+
+@media (max-width: 650px) {
+
+    #detalleConversacion .respuesta-admin {
+        max-width: 85%;
+    }
+
+    #detalleConversacion
+    .detalle-conversacion-lista {
+
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #btnEnviarRespuesta {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   CENTRAR COLUMNA DE ACCIONES
+   ============================================================ */
+
+.tabla-mensajes th:last-child,
+.tabla-mensajes td:last-child {
+    text-align: center;
+}
+
+.acciones-mensaje {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    width: 100%;
+}
+
+.acciones-mensaje .badge-respuesta-nueva,
+.acciones-mensaje .btn-ver {
+    margin-left: auto;
+    margin-right: auto;
+}

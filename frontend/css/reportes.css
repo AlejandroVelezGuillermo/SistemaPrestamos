@@ -1,0 +1,352 @@
+/* ============================================================
+   ENCABEZADO
+============================================================ */
+
+.reportes-header {
+    margin-bottom: 20px;
+}
+
+.reportes-header h2 {
+    margin: 0 0 4px;
+    color: #0f172a;
+    font-size: 22px;
+}
+
+.reportes-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   RESUMEN PRINCIPAL
+============================================================ */
+
+.reportes-resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.resumen-card {
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.resumen-card span {
+    display: block;
+    margin-bottom: 8px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.resumen-card strong {
+    color: #0f172a;
+    font-size: 22px;
+}
+
+
+/* ============================================================
+   GRID DE REPORTES
+============================================================ */
+
+.reportes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.reporte-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.reporte-rango {
+    margin-bottom: 20px;
+}
+
+.reporte-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 18px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.reporte-panel-header h3 {
+    margin: 0 0 4px;
+    color: #0f172a;
+    font-size: 16px;
+}
+
+.reporte-panel-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   ESTADOS
+============================================================ */
+
+.reporte-estados {
+    padding: 18px 20px;
+}
+
+.estado-reporte-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.estado-reporte-item:last-child {
+    border-bottom: none;
+}
+
+.estado-reporte-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.estado-reporte-info strong {
+    color: #0f172a;
+    font-size: 13px;
+}
+
+.estado-reporte-info span {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.estado-reporte-valor {
+    text-align: right;
+}
+
+.estado-reporte-valor strong {
+    display: block;
+    color: #0f172a;
+    font-size: 16px;
+}
+
+.estado-reporte-valor span {
+    color: #64748b;
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   FILTROS
+============================================================ */
+
+.filtros-reportes {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+    padding: 18px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filtro-grupo label {
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.filtro-grupo input {
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.filtro-grupo input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.filtro-boton {
+    display: flex;
+    align-items: end;
+}
+
+
+/* ============================================================
+   BOTONES
+============================================================ */
+
+.btn-primary {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 7px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+
+/* ============================================================
+   RESUMEN DEL RANGO
+============================================================ */
+
+.resumen-rango {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 18px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.resumen-rango-item {
+    padding: 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.resumen-rango-item span {
+    display: block;
+    margin-bottom: 6px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.resumen-rango-item strong {
+    color: #0f172a;
+    font-size: 18px;
+}
+
+
+/* ============================================================
+   TABLAS
+============================================================ */
+
+.tabla-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-reportes {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.tabla-reportes th {
+    padding: 12px 13px;
+    text-align: left;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-reportes td {
+    padding: 13px;
+    color: #334155;
+    font-size: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-reportes tbody tr:hover {
+    background: #f8fafc;
+}
+
+.tabla-cargando,
+.tabla-vacia {
+    padding: 30px !important;
+    text-align: center !important;
+    color: #64748b !important;
+}
+
+
+/* ============================================================
+   MENSAJES
+============================================================ */
+
+.mensaje-reportes {
+    display: none;
+}
+
+.mensaje-reportes.error,
+.mensaje-reportes.exito {
+    display: block;
+    margin: 15px 20px 0;
+    padding: 11px 13px;
+    border-radius: 7px;
+    font-size: 12px;
+}
+
+.mensaje-reportes.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.mensaje-reportes.exito {
+    background: #dcfce7;
+    color: #166534;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1000px) {
+
+    .reportes-resumen {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reportes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .reportes-resumen,
+    .resumen-rango {
+        grid-template-columns: 1fr;
+    }
+
+    .filtros-reportes {
+        grid-template-columns: 1fr;
+    }
+
+    .filtro-boton {
+        align-items: stretch;
+    }
+
+    .filtro-boton button {
+        width: 100%;
+    }
+}

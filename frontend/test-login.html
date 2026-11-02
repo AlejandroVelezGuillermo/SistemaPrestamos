@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prueba de Login</title>
+</head>
+
+<body>
+
+    <h1>Prueba de Login</h1>
+
+    <form id="loginForm">
+
+        <div>
+            <label for="correo">Correo:</label>
+            <input
+                type="email"
+                id="correo"
+                value="admin@sistemaprestamos.com"
+                required
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label for="password">Contraseña:</label>
+            <input
+                type="password"
+                id="password"
+                value="Admin12345"
+                required
+            >
+        </div>
+
+        <br>
+
+        <button type="submit">
+            Iniciar sesión
+        </button>
+
+    </form>
+
+    <h3>Respuesta del servidor:</h3>
+
+    <pre id="resultado"></pre>
+
+
+    <script>
+
+        const formulario = document.getElementById("loginForm");
+        const resultado = document.getElementById("resultado");
+
+
+        formulario.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            const correo = document.getElementById("correo").value;
+            const password = document.getElementById("password").value;
+
+
+            try {
+
+                const respuesta = await fetch(
+                    "../backend/routes/login.php",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            correo: correo,
+                            password: password
+                        })
+                    }
+                );
+
+
+                const datos = await respuesta.json();
+
+
+                resultado.textContent =
+                    JSON.stringify(datos, null, 4);
+
+
+            } catch (error) {
+
+                resultado.textContent =
+                    "Error al conectar con el servidor: " + error;
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

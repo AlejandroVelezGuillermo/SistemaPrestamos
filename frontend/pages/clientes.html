@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clientes | Sistema de Préstamos</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css?v=2">
+
+    <link rel="stylesheet" href="../css/clientes.css">
+
+    <link rel="stylesheet" href="../css/tema.css?v=3">
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="logo">
+                    $
+                </div>
+
+                <div>
+                    <h2>Préstamos</h2>
+                    <span>Sistema de gestión</span>
+                </div>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <p class="menu-title">
+                    PRINCIPAL
+                </p>
+
+                <a href="dashboard.html" class="menu-item">
+                    <span>📊</span>
+                    Dashboard
+                </a>
+
+
+                <p class="menu-title">
+                    GESTIÓN
+                </p>
+
+                <a href="clientes.html" class="menu-item active">
+                    <span>👥</span>
+                    Clientes
+                </a>
+
+                <a href="solicitudes.html" class="menu-item">
+                    <span>📝</span>
+                    Solicitudes
+                </a>
+
+                <a href="solicitudes.html" class="menu-item">
+                    <span>💰</span>
+                    Préstamos
+                </a>
+
+                <a href="pagos.html" class="menu-item">
+                    <span>💵</span>
+                    Pagos
+                </a>
+
+                <a href="mensajes.html" class="menu-item" class="menu-item">
+                    <span>✉️</span>
+                    Mensajes
+                </a>
+
+
+                <p class="menu-title">
+                    ADMINISTRACIÓN
+                </p>
+
+                <a href="usuarios.html" class="menu-item">
+                    <span>👤</span>
+                    Usuarios
+                </a>
+
+                <a href="reportes.html" class="menu-item">
+                    <span>📈</span>
+                    Reportes
+                </a>
+
+                <a href="configuracion.html" class="menu-item">
+                    <span>⚙️</span>
+                    Configuración
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- =========================================================
+         CONTENIDO
+    ========================================================== -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+                    <h1>Clientes</h1>
+                    <p>Administración de clientes registrados</p>
+                </div>
+
+
+                <div class="user-info user-info-menu" id="usuarioMenu">
+
+                    <button type="button" class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+
+                    <div class="user-avatar" id="avatarUsuario">
+                        A
+                    </div>
+
+                    <div class="user-data">
+
+                        <strong id="nombreUsuario">
+                            Cargando...
+                        </strong>
+
+                        <span id="rolUsuario">
+                            Cargando...
+                        </span>
+
+                    </div>
+
+                    <span class="user-menu-flecha">
+                        ▼
+                    </span>
+
+                    <div class="user-dropdown" id="usuarioDropdown">
+
+                        <button type="button" id="logoutButtonPerfil">
+                            <span>🚪</span>
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="content">
+
+                <div class="clientes-header">
+
+                    <div>
+                        <h2>Lista de clientes</h2>
+
+                        <p>
+                            Consulta y administra los clientes del sistema.
+                        </p>
+                    </div>
+
+
+                    <button type="button" id="btnNuevoCliente" class="btn-primary">
+                        + Nuevo cliente
+                    </button>
+
+                </div>
+
+
+                <!-- =====================================================
+                 RESUMEN
+            ====================================================== -->
+
+                <div class="clientes-resumen">
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Total de clientes
+                        </span>
+
+                        <strong id="totalClientes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Clientes activos
+                        </span>
+
+                        <strong id="clientesActivos">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Clientes inactivos
+                        </span>
+
+                        <strong id="clientesInactivos">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+                 TABLA
+            ====================================================== -->
+
+                <div class="clientes-panel">
+
+                    <div class="clientes-toolbar">
+
+                        <div class="search-box">
+
+                            <input type="text" id="buscadorClientes"
+                                placeholder="Buscar por nombre, correo, teléfono o CURP...">
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="mensajeClientes" class="mensaje-clientes"></div>
+
+
+                    <div class="tabla-container">
+
+                        <table class="tabla-clientes">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Contacto</th>
+                                    <th>CURP</th>
+                                    <th>Ubicación</th>
+                                    <th>Estatus</th>
+                                    <th>Registro</th>
+                                    <th class="acciones-columna">
+                                        Acciones
+                                    </th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaClientesBody">
+
+                                <tr>
+
+                                    <td colspan="7" class="tabla-cargando">
+                                        Cargando clientes...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL NUEVO CLIENTE
+============================================================== -->
+
+    <div id="modalCliente" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Registrar cliente</h2>
+
+                    <p>
+                        Completa la información del nuevo cliente.
+                    </p>
+                </div>
+
+
+                <button type="button" id="cerrarModal" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formCliente">
+
+                <div class="form-section">
+
+                    <h3>Datos personales</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="nombre">
+                                Nombre *
+                            </label>
+
+                            <input type="text" id="nombre" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="apellidoPaterno">
+                                Apellido paterno *
+                            </label>
+
+                            <input type="text" id="apellidoPaterno" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="apellidoMaterno">
+                                Apellido materno
+                            </label>
+
+                            <input type="text" id="apellidoMaterno">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="fechaNacimiento">
+                                Fecha de nacimiento
+                            </label>
+
+                            <input type="date" id="fechaNacimiento">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h3>Contacto</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="correoCliente">
+                                Correo electrónico *
+                            </label>
+
+                            <input type="email" id="correoCliente" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="telefono">
+                                Teléfono *
+                            </label>
+
+                            <input type="tel" id="telefono" maxlength="20" required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h3>Identificación</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="curp">
+                                CURP
+                            </label>
+
+                            <input type="text" id="curp" maxlength="18">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="rfc">
+                                RFC
+                            </label>
+
+                            <input type="text" id="rfc" maxlength="13">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h3>Dirección</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group form-group-full">
+
+                            <label for="direccion">
+                                Dirección
+                            </label>
+
+                            <input type="text" id="direccion">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="ciudad">
+                                Ciudad
+                            </label>
+
+                            <input type="text" id="ciudad">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="estado">
+                                Estado
+                            </label>
+
+                            <input type="text" id="estado">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="codigoPostal">
+                                Código postal
+                            </label>
+
+                            <input type="text" id="codigoPostal" maxlength="10">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h3>Acceso al sistema</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group form-group-full">
+
+                            <label for="passwordCliente">
+                                Contraseña temporal *
+                            </label>
+
+                            <input type="password" id="passwordCliente" minlength="8" required>
+
+                            <small>
+                                Debe contener al menos 8 caracteres.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeFormulario" class="mensaje-formulario"></div>
+
+
+                <div class="modal-footer">
+
+                    <button type="button" id="cancelarCliente" class="btn-secondary">
+                        Cancelar
+                    </button>
+
+
+                    <button type="submit" id="guardarCliente" class="btn-primary">
+                        Registrar cliente
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL VER CLIENTE
+============================================================== -->
+
+    <div id="modalVerCliente" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Información del cliente</h2>
+
+                    <p id="detalleClienteId">
+                        Cliente
+                    </p>
+                </div>
+
+
+                <button type="button" id="cerrarModalVer" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>Datos personales</h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Nombre</label>
+
+                        <input id="detalleNombre" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Apellido paterno
+                        </label>
+
+                        <input id="detalleApellidoPaterno" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Apellido materno
+                        </label>
+
+                        <input id="detalleApellidoMaterno" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fecha de nacimiento
+                        </label>
+
+                        <input id="detalleFechaNacimiento" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>Contacto</h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Correo electrónico
+                        </label>
+
+                        <input id="detalleCorreo" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Teléfono</label>
+
+                        <input id="detalleTelefono" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>Identificación</h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>CURP</label>
+
+                        <input id="detalleCurp" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>RFC</label>
+
+                        <input id="detalleRfc" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>Dirección</h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group form-group-full">
+
+                        <label>Dirección</label>
+
+                        <input id="detalleDireccion" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Ciudad</label>
+
+                        <input id="detalleCiudad" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Estado</label>
+
+                        <input id="detalleEstado" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Código postal
+                        </label>
+
+                        <input id="detalleCodigoPostal" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>
+                    Información del sistema
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Estatus</label>
+
+                        <input id="detalleEstatus" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fecha de registro
+                        </label>
+
+                        <input id="detalleFechaRegistro" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Última actualización
+                        </label>
+
+                        <input id="detalleFechaActualizacion" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Último acceso
+                        </label>
+
+                        <input id="detalleUltimoAcceso" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" id="cerrarDetalleCliente" class="btn-primary">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL EDITAR CLIENTE
+============================================================== -->
+
+    <div id="modalEditarCliente" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>Editar cliente</h2>
+
+                    <p id="editarClienteId">
+                        Cliente
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalEditar" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formEditarCliente">
+
+                <input type="hidden" id="editarIdCliente">
+
+
+                <div class="form-section">
+
+                    <h3>Datos personales</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="editarNombre">
+                                Nombre *
+                            </label>
+
+                            <input type="text" id="editarNombre" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="editarApellidoPaterno">
+                                Apellido paterno *
+                            </label>
+
+                            <input type="text" id="editarApellidoPaterno" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="editarApellidoMaterno">
+                                Apellido materno
+                            </label>
+
+                            <input type="text" id="editarApellidoMaterno">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="editarFechaNacimiento">
+                                Fecha de nacimiento
+                            </label>
+
+                            <input type="date" id="editarFechaNacimiento">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h3>Contacto</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="editarCorreo">
+                                Correo electrónico *
+                            </label>
+
+                            <input type="email" id="editarCorreo" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="editarTelefono">
+                                Teléfono *
+                            </label>
+
+                            <input type="tel" id="editarTelefono" maxlength="20" required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h3>Identificación</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="editarCurp">
+                                CURP
+                            </label>
+
+                            <input type="text" id="editarCurp" maxlength="18">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="editarRfc">
+                                RFC
+                            </label>
+
+                            <input type="text" id="editarRfc" maxlength="13">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h3>Dirección</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group form-group-full">
+
+                            <label for="editarDireccion">
+                                Dirección
+                            </label>
+
+                            <input type="text" id="editarDireccion">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="editarCiudad">
+                                Ciudad
+                            </label>
+
+                            <input type="text" id="editarCiudad">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="editarEstado">
+                                Estado
+                            </label>
+
+                            <input type="text" id="editarEstado">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="editarCodigoPostal">
+                                Código postal
+                            </label>
+
+                            <input type="text" id="editarCodigoPostal" maxlength="10">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <h3>Estado del cliente</h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group form-group-full">
+
+                            <label for="editarEstatus">
+                                Estatus *
+                            </label>
+
+                            <select id="editarEstatus" required>
+
+                                <option value="activo">
+                                    Activo
+                                </option>
+
+                                <option value="inactivo">
+                                    Inactivo
+                                </option>
+
+                                <option value="bloqueado">
+                                    Bloqueado
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeEditar" class="mensaje-formulario"></div>
+
+
+                <div class="modal-footer">
+
+                    <button type="button" id="cancelarEditar" class="btn-secondary">
+                        Cancelar
+                    </button>
+
+
+                    <button type="submit" id="guardarEdicion" class="btn-primary">
+                        Guardar cambios
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL DOCUMENTOS DEL CLIENTE
+============================================================== -->
+
+    <div id="modalDocumentos" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content modal-documentos">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Documentos del cliente
+                    </h2>
+
+                    <p id="documentosClienteNombre">
+                        Cliente
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalDocumentos" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- ID CLIENTE -->
+
+            <input type="hidden" id="documentosIdCliente">
+
+
+            <!-- =====================================================
+             SUBIR DOCUMENTO
+        ====================================================== -->
+
+            <form id="formDocumento">
+
+                <div class="form-section">
+
+                    <h3>
+                        Subir nuevo documento
+                    </h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="tipoDocumento">
+                                Tipo de documento *
+                            </label>
+
+                            <select id="tipoDocumento" required>
+
+                                <option value="">
+                                    Selecciona...
+                                </option>
+
+                                <option value="INE">
+                                    INE
+                                </option>
+
+                                <option value="CURP">
+                                    CURP
+                                </option>
+
+                                <option value="RFC">
+                                    RFC
+                                </option>
+
+                                <option value="comprobante_domicilio">
+                                    Comprobante de domicilio
+                                </option>
+
+                                <option value="comprobante_ingresos">
+                                    Comprobante de ingresos
+                                </option>
+
+                                <option value="otro">
+                                    Otro documento
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="archivoDocumento">
+                                Archivo *
+                            </label>
+
+                            <input type="file" id="archivoDocumento" accept=".pdf,.jpg,.jpeg,.png" required>
+
+                            <small>
+                                PDF, JPG, JPEG o PNG. Máximo 5 MB.
+                            </small>
+
+                        </div>
+
+
+                        <div class="form-group form-group-full">
+
+                            <label for="observacionesDocumento">
+                                Observaciones
+                            </label>
+
+                            <input type="text" id="observacionesDocumento" maxlength="255"
+                                placeholder="Información adicional del documento">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeDocumento" class="mensaje-formulario"></div>
+
+
+                <div class="modal-footer">
+
+                    <button type="submit" id="btnSubirDocumento" class="btn-primary">
+                        Subir documento
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- =====================================================
+             DOCUMENTOS REGISTRADOS
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Documentos registrados
+                </h3>
+
+
+                <div id="listaDocumentos" class="documentos-lista">
+
+                    <div class="tabla-vacia">
+                        Cargando documentos...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" id="cerrarDocumentos" class="btn-secondary">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/sistema_prestamos/frontend/js/tema.js?v=5"></script>
+    <script src="../js/clientes.js?v=2"></script>
+
+</body>
+
+</html>

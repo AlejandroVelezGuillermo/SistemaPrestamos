@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Usuarios | Sistema de Préstamos</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css?v=2">
+
+    <link rel="stylesheet" href="../css/usuarios.css">
+    <link rel="stylesheet" href="../css/tema.css?v=14">
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="logo">
+                    $
+                </div>
+
+                <div>
+                    <h2>Préstamos</h2>
+                    <span>Sistema de gestión</span>
+                </div>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <p class="menu-title">
+                    PRINCIPAL
+                </p>
+
+                <a href="dashboard.html" class="menu-item">
+                    <span>📊</span>
+                    Dashboard
+                </a>
+
+
+                <p class="menu-title">
+                    GESTIÓN
+                </p>
+
+                <a href="clientes.html" class="menu-item">
+                    <span>👥</span>
+                    Clientes
+                </a>
+
+                <a href="solicitudes.html" class="menu-item">
+                    <span>📝</span>
+                    Solicitudes
+                </a>
+
+                <a href="prestamos.html" class="menu-item">
+                    <span>💰</span>
+                    Préstamos
+                </a>
+
+                <a href="pagos.html" class="menu-item">
+                    <span>💵</span>
+                    Pagos
+                </a>
+
+                <a href="mensajes.html" class="menu-item">
+                    <span>✉️</span>
+                    Mensajes
+                </a>
+
+
+                <p class="menu-title">
+                    ADMINISTRACIÓN
+                </p>
+
+                <a href="usuarios.html" class="menu-item active">
+                    <span>👤</span>
+                    Usuarios
+                </a>
+
+                <a href="reportes.html" class="menu-item">
+                    <span>📈</span>
+                    Reportes
+                </a>
+
+                <a href="configuracion.html" class="menu-item">
+                    <span>⚙️</span>
+                    Configuración
+                </a>
+
+            </nav>
+
+
+        </aside>
+
+
+        <!-- =========================================================
+         CONTENIDO
+    ========================================================== -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>
+                        Usuarios
+                    </h1>
+
+                    <p>
+                        Administración de cuentas y permisos del sistema
+                    </p>
+
+                </div>
+
+
+                <div class="user-info user-info-menu" id="usuarioMenu">
+
+                    <button type="button" class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <div class="user-avatar" id="avatarUsuario">
+                        A
+                    </div>
+
+                    <div class="user-data">
+
+                        <strong id="nombreUsuario">
+                            Cargando...
+                        </strong>
+
+                        <span id="rolUsuario">
+                            Cargando...
+                        </span>
+
+                    </div>
+
+                    <span class="user-menu-flecha">
+                        ▼
+                    </span>
+
+                    <div class="user-dropdown" id="usuarioDropdown">
+
+                        <button type="button" id="logoutButtonPerfil">
+                            <span>🚪</span>
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="content">
+
+                <!-- =================================================
+                 ENCABEZADO
+            ================================================== -->
+
+                <div class="usuarios-header">
+
+                    <div>
+
+                        <h2>
+                            Usuarios del sistema
+                        </h2>
+
+                        <p>
+                            Consulta, registra y administra las cuentas de acceso.
+                        </p>
+
+                    </div>
+
+
+                    <button type="button" id="btnNuevoUsuario" class="btn-primary">
+                        + Nuevo usuario
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+                 RESUMEN
+            ================================================== -->
+
+                <div class="usuarios-resumen">
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Total usuarios
+                        </span>
+
+                        <strong id="totalUsuarios">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Administradores
+                        </span>
+
+                        <strong id="totalAdministradores">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Gerentes
+                        </span>
+
+                        <strong id="totalGerentes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Clientes
+                        </span>
+
+                        <strong id="totalClientes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Usuarios activos
+                        </span>
+
+                        <strong id="totalActivos">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 TABLA
+            ================================================== -->
+
+                <div class="usuarios-panel">
+
+                    <div class="usuarios-toolbar">
+
+                        <input type="text" id="buscadorUsuarios"
+                            placeholder="Buscar por nombre, correo, rol o estatus...">
+
+                    </div>
+
+
+                    <div id="mensajeUsuarios" class="mensaje-usuarios"></div>
+
+
+                    <div class="tabla-container">
+
+                        <table class="tabla-usuarios">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Usuario</th>
+                                    <th>Correo</th>
+                                    <th>Teléfono</th>
+                                    <th>Rol</th>
+                                    <th>Estatus</th>
+                                    <th>Creación</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaUsuariosBody">
+
+                                <tr>
+
+                                    <td colspan="8" class="tabla-cargando">
+                                        Cargando usuarios...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL CREAR / EDITAR USUARIO
+============================================================== -->
+
+    <div id="modalUsuario" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2 id="tituloModalUsuario">
+                        Nuevo usuario
+                    </h2>
+
+                    <p id="subtituloModalUsuario">
+                        Ingresa los datos de la cuenta.
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalUsuario" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>
+                    Datos personales
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="usuarioNombre">
+                            Nombre *
+                        </label>
+
+                        <input id="usuarioNombre" type="text" maxlength="100">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioApellidoPaterno">
+                            Apellido paterno *
+                        </label>
+
+                        <input id="usuarioApellidoPaterno" type="text" maxlength="100">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioApellidoMaterno">
+                            Apellido materno
+                        </label>
+
+                        <input id="usuarioApellidoMaterno" type="text" maxlength="100">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioTelefono">
+                            Teléfono
+                        </label>
+
+                        <input id="usuarioTelefono" type="text" maxlength="20">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioFechaNacimiento">
+                            Fecha de nacimiento
+                        </label>
+
+                        <input id="usuarioFechaNacimiento" type="date">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioCurp">
+                            CURP
+                        </label>
+
+                        <input id="usuarioCurp" type="text" maxlength="18">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioRfc">
+                            RFC
+                        </label>
+
+                        <input id="usuarioRfc" type="text" maxlength="13">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>
+                    Dirección
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group form-group-full">
+
+                        <label for="usuarioDireccion">
+                            Dirección
+                        </label>
+
+                        <input id="usuarioDireccion" type="text" maxlength="255">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioCiudad">
+                            Ciudad
+                        </label>
+
+                        <input id="usuarioCiudad" type="text" maxlength="100">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioEstado">
+                            Estado
+                        </label>
+
+                        <input id="usuarioEstado" type="text" maxlength="100">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioCodigoPostal">
+                            Código postal
+                        </label>
+
+                        <input id="usuarioCodigoPostal" type="text" maxlength="10">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>
+                    Cuenta de acceso
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="usuarioCorreo">
+                            Correo *
+                        </label>
+
+                        <input id="usuarioCorreo" type="email" maxlength="150">
+
+                    </div>
+
+
+                    <div id="grupoPasswordUsuario" class="form-group">
+
+                        <label for="usuarioPassword">
+                            Contraseña *
+                        </label>
+
+                        <input id="usuarioPassword" type="password" minlength="6" maxlength="255"
+                            autocomplete="new-password">
+
+                        <small>
+                            Mínimo 6 caracteres.
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioRol">
+                            Rol *
+                        </label>
+
+                        <select id="usuarioRol">
+
+                            <option value="">
+                                Selecciona...
+                            </option>
+
+                            <option value="administrador">
+                                Administrador
+                            </option>
+
+                            <option value="gerente">
+                                Gerente
+                            </option>
+
+                            <option value="cliente">
+                                Cliente
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="usuarioEstatus">
+                            Estatus *
+                        </label>
+
+                        <select id="usuarioEstatus">
+
+                            <option value="activo">
+                                Activo
+                            </option>
+
+                            <option value="inactivo">
+                                Inactivo
+                            </option>
+
+                            <option value="bloqueado">
+                                Bloqueado
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeFormularioUsuario" class="mensaje-usuarios"></div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" id="cancelarUsuario" class="btn-secondary">
+                    Cancelar
+                </button>
+
+
+                <button type="button" id="guardarUsuario" class="btn-primary">
+                    Guardar usuario
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL VER USUARIO
+============================================================== -->
+
+    <div id="modalVerUsuario" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Información del usuario
+                    </h2>
+
+                    <p id="detalleUsuarioId">
+                        Usuario
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalVerUsuario" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>
+                    Datos personales
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Nombre completo
+                        </label>
+
+                        <input id="detalleUsuarioNombre" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Correo
+                        </label>
+
+                        <input id="detalleUsuarioCorreo" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Teléfono
+                        </label>
+
+                        <input id="detalleUsuarioTelefono" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fecha de nacimiento
+                        </label>
+
+                        <input id="detalleUsuarioNacimiento" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            CURP
+                        </label>
+
+                        <input id="detalleUsuarioCurp" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            RFC
+                        </label>
+
+                        <input id="detalleUsuarioRfc" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>
+                    Dirección
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group form-group-full">
+
+                        <label>
+                            Dirección
+                        </label>
+
+                        <input id="detalleUsuarioDireccion" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Ciudad
+                        </label>
+
+                        <input id="detalleUsuarioCiudad" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Estado
+                        </label>
+
+                        <input id="detalleUsuarioEstado" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Código postal
+                        </label>
+
+                        <input id="detalleUsuarioCodigoPostal" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <h3>
+                    Cuenta
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Rol
+                        </label>
+
+                        <input id="detalleUsuarioRol" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Estatus
+                        </label>
+
+                        <input id="detalleUsuarioEstatus" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Último acceso
+                        </label>
+
+                        <input id="detalleUsuarioUltimoAcceso" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fecha de creación
+                        </label>
+
+                        <input id="detalleUsuarioCreacion" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" id="cerrarDetalleUsuario" class="btn-secondary">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL CAMBIAR CONTRASEÑA
+============================================================== -->
+
+    <div id="modalPasswordUsuario" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content modal-pequeno">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Cambiar contraseña
+                    </h2>
+
+                    <p id="passwordUsuarioNombre">
+                        Usuario
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalPassword" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="form-grid form-grid-password">
+
+                    <div class="form-group form-group-full">
+
+                        <label for="nuevaPasswordUsuario">
+                            Nueva contraseña *
+                        </label>
+
+                        <input id="nuevaPasswordUsuario" type="password" minlength="6" maxlength="255"
+                            autocomplete="new-password">
+
+                    </div>
+
+
+                    <div class="form-group form-group-full">
+
+                        <label for="confirmarPasswordUsuario">
+                            Confirmar contraseña *
+                        </label>
+
+                        <input id="confirmarPasswordUsuario" type="password" minlength="6" maxlength="255"
+                            autocomplete="new-password">
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajePasswordUsuario" class="mensaje-usuarios"></div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" id="cancelarPasswordUsuario" class="btn-secondary">
+                    Cancelar
+                </button>
+
+
+                <button type="button" id="guardarPasswordUsuario" class="btn-primary">
+                    Cambiar contraseña
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="/sistema_prestamos/frontend/js/tema.js?v=5"></script>
+    <script src="../js/usuarios.js?v=2"></script>
+
+</body>
+
+</html>

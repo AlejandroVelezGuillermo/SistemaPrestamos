@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Préstamos | Sistema de Préstamos</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css?v=2">
+
+    <link rel="stylesheet" href="../css/prestamos.css">
+    <link rel="stylesheet" href="../css/tema.css?v=11">
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="logo">
+                    $
+                </div>
+
+                <div>
+                    <h2>Préstamos</h2>
+                    <span>Sistema de gestión</span>
+                </div>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <p class="menu-title">
+                    PRINCIPAL
+                </p>
+
+                <a href="dashboard.html" class="menu-item">
+                    <span>📊</span>
+                    Dashboard
+                </a>
+
+
+                <p class="menu-title">
+                    GESTIÓN
+                </p>
+
+                <a href="clientes.html" class="menu-item">
+                    <span>👥</span>
+                    Clientes
+                </a>
+
+                <a href="solicitudes.html" class="menu-item">
+                    <span>📝</span>
+                    Solicitudes
+                </a>
+
+                <a href="prestamos.html" class="menu-item active">
+                    <span>💰</span>
+                    Préstamos
+                </a>
+
+                <a href="pagos.html" class="menu-item">
+                    <span>💵</span>
+                    Pagos
+                </a>
+
+                <a href="mensajes.html" class="menu-item" class="menu-item">
+                    <span>✉️</span>
+                    Mensajes
+                </a>
+
+
+                <p class="menu-title">
+                    ADMINISTRACIÓN
+                </p>
+
+                <a href="usuarios.html" class="menu-item">
+                    <span>👤</span>
+                    Usuarios
+                </a>
+
+                <a href="reportes.html" class="menu-item">
+                    <span>📈</span>
+                    Reportes
+                </a>
+
+                <a href="configuracion.html" class="menu-item">
+                    <span>⚙️</span>
+                    Configuración
+                </a>
+
+            </nav>
+
+
+
+        </aside>
+
+
+        <!-- =========================================================
+         CONTENIDO
+    ========================================================== -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>
+                        Préstamos
+                    </h1>
+
+                    <p>
+                        Administración de préstamos aprobados
+                    </p>
+
+                </div>
+
+
+                <div class="user-info user-info-menu" id="usuarioMenu">
+
+                    <button type="button" class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <div class="user-avatar" id="avatarUsuario">
+                        A
+                    </div>
+
+                    <div class="user-data">
+
+                        <strong id="nombreUsuario">
+                            Cargando...
+                        </strong>
+
+                        <span id="rolUsuario">
+                            Cargando...
+                        </span>
+
+                    </div>
+
+                    <span class="user-menu-flecha">
+                        ▼
+                    </span>
+
+                    <div class="user-dropdown" id="usuarioDropdown">
+
+                        <button type="button" id="logoutButtonPerfil">
+                            <span>🚪</span>
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="content">
+
+                <div class="prestamos-header">
+
+                    <div>
+
+                        <h2>
+                            Lista de préstamos
+                        </h2>
+
+                        <p>
+                            Consulta los préstamos generados desde solicitudes aprobadas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 RESUMEN
+            ================================================== -->
+
+                <div class="prestamos-resumen">
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Total de préstamos
+                        </span>
+
+                        <strong id="totalPrestamos">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Pendientes de desembolso
+                        </span>
+
+                        <strong id="prestamosPendientes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Préstamos activos
+                        </span>
+
+                        <strong id="prestamosActivos">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Capital colocado
+                        </span>
+
+                        <strong id="capitalColocado">
+                            $0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 TABLA
+            ================================================== -->
+
+                <div class="prestamos-panel">
+
+                    <div class="prestamos-toolbar">
+
+                        <input type="text" id="buscadorPrestamos"
+                            placeholder="Buscar por cliente, correo, préstamo o estado...">
+
+                    </div>
+
+
+                    <div id="mensajePrestamos" class="mensaje-prestamos"></div>
+
+
+                    <div class="tabla-container">
+
+                        <table class="tabla-prestamos">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Préstamo</th>
+                                    <th>Cliente</th>
+                                    <th>Monto</th>
+                                    <th>Interés</th>
+                                    <th>Total a pagar</th>
+                                    <th>Cuotas</th>
+                                    <th>Estado</th>
+                                    <th>Aprobación</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaPrestamosBody">
+
+                                <tr>
+
+                                    <td colspan="9" class="tabla-cargando">
+                                        Cargando préstamos...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL VER PRÉSTAMO
+============================================================== -->
+
+    <div id="modalVerPrestamo" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Información del préstamo
+                    </h2>
+
+                    <p id="detallePrestamoId">
+                        Préstamo
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalPrestamo" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- =====================================================
+             CLIENTE
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Cliente
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Nombre
+                        </label>
+
+                        <input id="detalleCliente" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Correo
+                        </label>
+
+                        <input id="detalleCorreo" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Teléfono
+                        </label>
+
+                        <input id="detalleTelefono" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Tipo de préstamo
+                        </label>
+
+                        <input id="detalleTipoPrestamo" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             INFORMACIÓN FINANCIERA
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Información financiera
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Monto aprobado
+                        </label>
+
+                        <input id="detalleMontoAprobado" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Tasa de interés
+                        </label>
+
+                        <input id="detalleTasaInteres" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Total de intereses
+                        </label>
+
+                        <input id="detalleTotalIntereses" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Total a pagar
+                        </label>
+
+                        <input id="detalleTotalPagar" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Plazo
+                        </label>
+
+                        <input id="detallePlazo" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Frecuencia de pago
+                        </label>
+
+                        <input id="detalleFrecuencia" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Número de cuotas
+                        </label>
+
+                        <input id="detalleNumeroCuotas" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Monto por cuota
+                        </label>
+
+                        <input id="detalleMontoCuota" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             REQUISITOS
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Requisitos
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Aval
+                        </label>
+
+                        <input id="detalleAval" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Garantía
+                        </label>
+
+                        <input id="detalleGarantia" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             ESTADO Y FECHAS
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Estado y fechas
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Estado del préstamo
+                        </label>
+
+                        <input id="detalleEstadoPrestamo" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fecha de aprobación
+                        </label>
+
+                        <input id="detalleFechaAprobacion" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fecha de desembolso
+                        </label>
+
+                        <input id="detalleFechaDesembolso" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Inicio de pagos
+                        </label>
+
+                        <input id="detalleFechaInicioPago" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fecha de vencimiento
+                        </label>
+
+                        <input id="detalleFechaVencimiento" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Aprobado por
+                        </label>
+
+                        <input id="detalleAprobadoPor" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             OBSERVACIONES
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Observaciones
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group form-group-full">
+
+                        <textarea id="detalleObservaciones" rows="4" readonly></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             DESEMBOLSO
+        ====================================================== -->
+
+            <div id="seccionDesembolso" class="form-section" style="display: none;">
+
+                <h3>
+                    Registrar desembolso
+                </h3>
+
+
+                <div class="info-prestamo">
+
+                    El desembolso registrará la entrega del capital y generará automáticamente el calendario de cuotas.
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <!-- MÉTODO -->
+
+                    <div class="form-group">
+
+                        <label for="metodoPagoDesembolso">
+                            Método de pago *
+                        </label>
+
+                        <select id="metodoPagoDesembolso">
+                            <option value="">
+                                Selecciona...
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- MONTO -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Monto a desembolsar
+                        </label>
+
+                        <input id="montoDesembolso" type="text" readonly>
+
+                    </div>
+
+
+                    <!-- FECHA -->
+
+                    <div class="form-group">
+
+                        <label for="fechaDesembolso">
+                            Fecha de desembolso *
+                        </label>
+
+                        <input id="fechaDesembolso" type="date">
+
+                        <small>
+                            La primera cuota se calculará a partir de esta fecha.
+                        </small>
+
+                    </div>
+
+
+                    <!-- REFERENCIA -->
+
+                    <div class="form-group">
+
+                        <label for="referenciaDesembolso">
+                            Referencia
+                        </label>
+
+                        <input id="referenciaDesembolso" type="text" maxlength="100"
+                            placeholder="Ej. transferencia 123456">
+
+                    </div>
+
+
+                    <!-- COMPROBANTE -->
+
+                    <div class="form-group form-group-full">
+
+                        <label for="comprobanteDesembolso">
+                            Comprobante
+                        </label>
+
+                        <input id="comprobanteDesembolso" type="text" maxlength="255"
+                            placeholder="Ej. comprobante_001.pdf o folio del comprobante">
+
+                        <small>
+                            Por ahora guardaremos el nombre, folio o referencia del comprobante. Más adelante podemos
+                            agregar carga de archivo.
+                        </small>
+
+                    </div>
+
+
+                    <!-- OBSERVACIONES -->
+
+                    <div class="form-group form-group-full">
+
+                        <label for="observacionesDesembolso">
+                            Observaciones
+                        </label>
+
+                        <textarea id="observacionesDesembolso" rows="3" maxlength="1000"
+                            placeholder="Observaciones opcionales sobre la entrega del dinero..."></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeDesembolso" class="mensaje-prestamos"></div>
+
+
+                <div class="modal-footer">
+
+                    <button type="button" id="btnDesembolsar" class="btn-primary">
+                        Confirmar desembolso
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             INFORMACIÓN DEL DESEMBOLSO REALIZADO
+        ====================================================== -->
+
+            <div id="seccionDesembolsoRealizado" class="form-section" style="display: none;">
+
+                <h3>
+                    Información del desembolso
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Método de pago
+                        </label>
+
+                        <input id="detalleMetodoDesembolso" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Monto desembolsado
+                        </label>
+
+                        <input id="detalleMontoDesembolso" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Referencia
+                        </label>
+
+                        <input id="detalleReferenciaDesembolso" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Realizado por
+                        </label>
+
+                        <input id="detalleRealizadoPor" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group form-group-full">
+
+                        <label>
+                            Observaciones del desembolso
+                        </label>
+
+                        <textarea id="detalleObservacionesDesembolso" rows="3" readonly></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             CUOTAS
+        ====================================================== -->
+
+            <div id="seccionCuotas" class="form-section" style="display: none;">
+
+                <h3>
+                    Calendario de cuotas
+                </h3>
+
+
+                <div class="tabla-container">
+
+                    <table class="tabla-prestamos">
+
+                        <thead>
+
+                            <tr>
+                                <th>#</th>
+                                <th>Vencimiento</th>
+                                <th>Capital</th>
+                                <th>Interés</th>
+                                <th>Total</th>
+                                <th>Pagado</th>
+                                <th>Saldo</th>
+                                <th>Estado</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="tablaCuotasBody">
+
+                            <tr>
+
+                                <td colspan="8" class="tabla-vacia">
+                                    Sin cuotas generadas.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             CERRAR
+        ====================================================== -->
+
+            <div class="modal-footer">
+
+                <button type="button" id="cerrarDetallePrestamo" class="btn-secondary">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/sistema_prestamos/frontend/js/tema.js?v=5"></script>
+    <script src="../js/prestamos.js?v=3"></script>
+
+</body>
+
+</html>

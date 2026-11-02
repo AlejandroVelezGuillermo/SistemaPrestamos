@@ -1,0 +1,481 @@
+.pagos-header {
+    margin-bottom: 20px;
+}
+
+.pagos-header h2 {
+    margin: 0 0 4px;
+    color: #0f172a;
+    font-size: 22px;
+}
+
+.pagos-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   RESUMEN
+============================================================ */
+
+.pagos-resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.pagos-resumen-modal {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 0;
+}
+
+.resumen-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.resumen-card span {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.resumen-card strong {
+    color: #0f172a;
+    font-size: 22px;
+}
+
+
+/* ============================================================
+   PANEL
+============================================================ */
+
+.pagos-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pagos-toolbar {
+    padding: 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.pagos-toolbar input {
+    width: 430px;
+    max-width: 100%;
+    height: 40px;
+
+    padding: 0 13px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+
+    outline: none;
+}
+
+.pagos-toolbar input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* ============================================================
+   TABLAS
+============================================================ */
+
+.tabla-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-pagos {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: collapse;
+}
+
+.tabla-pagos th {
+    padding: 12px 13px;
+
+    text-align: left;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-pagos td {
+    padding: 13px;
+
+    color: #334155;
+
+    font-size: 12px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-cuotas-pagos {
+    min-width: 850px;
+}
+
+.tabla-cargando,
+.tabla-vacia {
+    text-align: center !important;
+    padding: 35px !important;
+    color: #64748b !important;
+}
+
+
+/* ============================================================
+   ESTADOS
+============================================================ */
+
+.estado-pago {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.estado-pendiente {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.estado-parcial {
+    background: #ffedd5;
+    color: #9a3412;
+}
+
+.estado-pagada {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.estado-vencida {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+
+/* ============================================================
+   BOTONES
+============================================================ */
+
+.btn-primary,
+.btn-secondary,
+.btn-accion {
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    padding: 10px 16px;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-secondary {
+    padding: 10px 16px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    border: 1px solid #cbd5e1;
+}
+
+.btn-accion {
+    padding: 6px 10px;
+
+    border: 1px solid #cbd5e1;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   MODAL
+============================================================ */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.62);
+}
+
+.modal-content {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+    max-width: 980px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+}
+
+.modal-pago-pequeno {
+    max-width: 700px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h2 {
+    margin: 0 0 4px;
+}
+
+.modal-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.modal-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #f1f5f9;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    padding: 18px 22px;
+
+    border-top: 1px solid #e2e8f0;
+}
+
+
+/* ============================================================
+   FORMULARIO
+============================================================ */
+
+.form-section {
+    padding: 20px 22px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.form-section h3 {
+    margin: 0 0 15px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 10px 12px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+.form-group input,
+.form-group select {
+    height: 42px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* ============================================================
+   MENSAJES
+============================================================ */
+
+.mensaje-pagos {
+    display: none;
+}
+
+.mensaje-pagos.error,
+.mensaje-pagos.exito {
+    display: block;
+
+    margin-top: 15px;
+
+    padding: 11px 13px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+}
+
+.mensaje-pagos.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.mensaje-pagos.exito {
+    background: #dcfce7;
+    color: #166534;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 900px) {
+
+    .pagos-resumen,
+    .pagos-resumen-modal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .pagos-resumen,
+    .pagos-resumen-modal,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group-full {
+        grid-column: auto;
+    }
+
+}
+
+/* ============================================================
+   HISTORIAL DE PAGOS
+============================================================ */
+
+.historial-header {
+    margin-top: 28px;
+}
+
+.historial-cliente {
+    display: block;
+
+    color: #0f172a;
+
+    font-weight: 600;
+}
+
+.historial-secundario {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   ESTADOS DEL HISTORIAL
+============================================================ */
+
+.estado-confirmado {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.estado-cancelado {
+    background: #fee2e2;
+    color: #991b1b;
+}

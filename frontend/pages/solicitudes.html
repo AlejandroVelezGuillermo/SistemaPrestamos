@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitudes | Sistema de Préstamos</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css?v=2">
+
+    <link rel="stylesheet" href="../css/solicitudes.css">
+    <link rel="stylesheet" href="../css/tema.css?v=11">
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="logo">
+                    $
+                </div>
+
+                <div>
+                    <h2>Préstamos</h2>
+                    <span>Sistema de gestión</span>
+                </div>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <p class="menu-title">
+                    PRINCIPAL
+                </p>
+
+                <a href="dashboard.html" class="menu-item">
+                    <span>📊</span>
+                    Dashboard
+                </a>
+
+
+                <p class="menu-title">
+                    GESTIÓN
+                </p>
+
+                <a href="clientes.html" class="menu-item">
+                    <span>👥</span>
+                    Clientes
+                </a>
+
+                <a href="solicitudes.html" class="menu-item active">
+                    <span>📝</span>
+                    Solicitudes
+                </a>
+
+                <a href="prestamos.html" class="menu-item">
+                    <span>💰</span>
+                    Préstamos
+                </a>
+
+                <a href="pagos.html" class="menu-item">
+                    <span>💵</span>
+                    Pagos
+                </a>
+
+                <a href="mensajes.html" class="menu-item" class="menu-item">
+                    <span>✉️</span>
+                    Mensajes
+                </a>
+
+
+                <p class="menu-title">
+                    ADMINISTRACIÓN
+                </p>
+
+                <a href="usuarios.html" class="menu-item">
+                    <span>👤</span>
+                    Usuarios
+                </a>
+
+                <a href="reportes.html" class="menu-item">
+                    <span>📈</span>
+                    Reportes
+                </a>
+
+                <a href="configuracion.html" class="menu-item">
+                    <span>⚙️</span>
+                    Configuración
+                </a>
+
+            </nav>
+
+
+        </aside>
+
+
+        <!-- =========================================================
+         CONTENIDO
+    ========================================================== -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>Solicitudes</h1>
+
+                    <p>
+                        Administración de solicitudes de préstamo
+                    </p>
+
+                </div>
+
+
+                <div class="user-info user-info-menu" id="usuarioMenu">
+
+                    <button type="button" class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <div class="user-avatar" id="avatarUsuario">
+                        A
+                    </div>
+
+                    <div class="user-data">
+
+                        <strong id="nombreUsuario">
+                            Cargando...
+                        </strong>
+
+                        <span id="rolUsuario">
+                            Cargando...
+                        </span>
+
+                    </div>
+
+                    <span class="user-menu-flecha">
+                        ▼
+                    </span>
+
+                    <div class="user-dropdown" id="usuarioDropdown">
+
+                        <button type="button" id="logoutButtonPerfil">
+                            <span>🚪</span>
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="content">
+
+                <!-- =================================================
+                 ENCABEZADO
+            ================================================== -->
+
+                <div class="solicitudes-header">
+
+                    <div>
+
+                        <h2>
+                            Solicitudes de préstamo
+                        </h2>
+
+                        <p>
+                            Consulta y registra solicitudes de los clientes.
+                        </p>
+
+                    </div>
+
+
+                    <button type="button" id="btnNuevaSolicitud" class="btn-primary">
+                        + Nueva solicitud
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+                 RESUMEN
+            ================================================== -->
+
+                <div class="solicitudes-resumen">
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Total de solicitudes
+                        </span>
+
+                        <strong id="totalSolicitudes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Pendientes
+                        </span>
+
+                        <strong id="solicitudesPendientes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Aprobadas
+                        </span>
+
+                        <strong id="solicitudesAprobadas">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Rechazadas
+                        </span>
+
+                        <strong id="solicitudesRechazadas">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 TABLA
+            ================================================== -->
+
+                <div class="solicitudes-panel">
+
+                    <div class="solicitudes-toolbar">
+
+                        <input type="text" id="buscadorSolicitudes"
+                            placeholder="Buscar por cliente, correo o tipo de préstamo...">
+
+                    </div>
+
+
+                    <div id="mensajeSolicitudes" class="mensaje-solicitudes"></div>
+
+
+                    <div class="tabla-container">
+
+                        <table class="tabla-solicitudes">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Solicitud</th>
+                                    <th>Cliente</th>
+                                    <th>Tipo</th>
+                                    <th>Monto</th>
+                                    <th>Plazo</th>
+                                    <th>Frecuencia</th>
+                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaSolicitudesBody">
+
+                                <tr>
+
+                                    <td colspan="9" class="tabla-cargando">
+                                        Cargando solicitudes...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL NUEVA SOLICITUD
+============================================================== -->
+
+    <div id="modalSolicitud" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Nueva solicitud de préstamo
+                    </h2>
+
+                    <p>
+                        Completa la información de la solicitud.
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalSolicitud" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formSolicitud">
+
+                <!-- =================================================
+                 CLIENTE
+            ================================================== -->
+
+                <div class="form-section">
+
+                    <h3>
+                        Cliente
+                    </h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group form-group-full">
+
+                            <label for="clienteSolicitud">
+                                Cliente *
+                            </label>
+
+                            <select id="clienteSolicitud" required>
+                                <option value="">
+                                    Selecciona un cliente...
+                                </option>
+                            </select>
+
+                            <small>
+                                Solo se muestran clientes activos.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 PRÉSTAMO
+            ================================================== -->
+
+                <div class="form-section">
+
+                    <h3>
+                        Información del préstamo
+                    </h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="tipoPrestamo">
+                                Tipo de préstamo *
+                            </label>
+
+                            <select id="tipoPrestamo" required>
+
+                                <option value="">
+                                    Selecciona...
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="montoSolicitado">
+                                Monto solicitado *
+                            </label>
+
+                            <input type="number" id="montoSolicitado" min="0" step="0.01" placeholder="0.00" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="plazoMeses">
+                                Plazo en meses *
+                            </label>
+
+                            <input type="number" id="plazoMeses" min="1" step="1" placeholder="Ej. 12" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="frecuenciaPago">
+                                Frecuencia de pago *
+                            </label>
+
+                            <select id="frecuenciaPago" required>
+
+                                <option value="">
+                                    Selecciona...
+                                </option>
+
+                                <option value="semanal">
+                                    Semanal
+                                </option>
+
+                                <option value="quincenal">
+                                    Quincenal
+                                </option>
+
+                                <option value="mensual">
+                                    Mensual
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="infoTipoPrestamo" class="info-prestamo">
+                        Selecciona un tipo de préstamo para consultar sus límites.
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 INFORMACIÓN ADICIONAL
+            ================================================== -->
+
+                <div class="form-section">
+
+                    <h3>
+                        Información adicional
+                    </h3>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group form-group-full">
+
+                            <label for="motivoSolicitud">
+                                Motivo del préstamo
+                            </label>
+
+                            <textarea id="motivoSolicitud" rows="4" maxlength="1000"
+                                placeholder="Ej. Compra de mercancía, gastos personales, reparación del vehículo..."></textarea>
+
+                        </div>
+
+
+                        <div class="form-group form-group-full">
+
+                            <label for="observacionesSolicitud">
+                                Observaciones
+                            </label>
+
+                            <textarea id="observacionesSolicitud" rows="3" maxlength="1000"
+                                placeholder="Observaciones internas opcionales..."></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeFormularioSolicitud" class="mensaje-formulario"></div>
+
+
+                <div class="modal-footer">
+
+                    <button type="button" id="cancelarSolicitud" class="btn-secondary">
+                        Cancelar
+                    </button>
+
+
+                    <button type="submit" id="guardarSolicitud" class="btn-primary">
+                        Registrar solicitud
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL VER / REVISAR SOLICITUD
+============================================================== -->
+
+    <div id="modalVerSolicitud" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Información de la solicitud
+                    </h2>
+
+                    <p id="detalleSolicitudId">
+                        Solicitud
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalVer" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- =====================================================
+             CLIENTE
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Cliente
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Nombre
+                        </label>
+
+                        <input id="detalleCliente" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Correo
+                        </label>
+
+                        <input id="detalleCorreo" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             PRÉSTAMO SOLICITADO
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Préstamo solicitado
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Tipo de préstamo
+                        </label>
+
+                        <input id="detalleTipo" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Monto solicitado
+                        </label>
+
+                        <input id="detalleMonto" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Plazo
+                        </label>
+
+                        <input id="detallePlazo" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Frecuencia
+                        </label>
+
+                        <input id="detalleFrecuencia" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Estado
+                        </label>
+
+                        <input id="detalleEstadoSolicitud" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fecha de solicitud
+                        </label>
+
+                        <input id="detalleFechaSolicitud" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             INFORMACIÓN ADICIONAL
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Información adicional
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group form-group-full">
+
+                        <label>
+                            Motivo
+                        </label>
+
+                        <textarea id="detalleMotivo" rows="3" readonly></textarea>
+
+                    </div>
+
+
+                    <div class="form-group form-group-full">
+
+                        <label>
+                            Observaciones de la solicitud
+                        </label>
+
+                        <textarea id="detalleObservaciones" rows="3" readonly></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             REVISIÓN
+        ====================================================== -->
+
+            <div id="seccionRevisionSolicitud" class="form-section">
+
+                <h3>
+                    Revisión de la solicitud
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Estado de revisión
+                        </label>
+
+                        <input id="detalleEstadoRevision" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fecha de revisión
+                        </label>
+
+                        <input id="detalleFechaRevision" type="text" value="Sin revisar" readonly>
+
+                    </div>
+
+
+                    <div class="form-group form-group-full">
+
+                        <label for="observacionesRevision">
+                            Observaciones de revisión
+                        </label>
+
+                        <textarea id="observacionesRevision" rows="3" maxlength="1000"
+                            placeholder="Escribe una observación sobre la revisión..."></textarea>
+
+                        <small>
+                            Para rechazar una solicitud es obligatorio indicar el motivo.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 INICIAR REVISIÓN
+            ================================================== -->
+
+                <div id="accionesRevisionSolicitud" class="modal-footer">
+
+                    <button type="button" id="btnIniciarRevision" class="btn-primary" style="display: none;">
+                        Iniciar revisión
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             CONFIGURACIÓN PARA APROBAR EL PRÉSTAMO
+        ====================================================== -->
+
+            <div id="seccionAprobacionPrestamo" class="form-section" style="display: none;">
+
+                <h3>
+                    Condiciones para aprobar el préstamo
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <!-- TASA -->
+
+                    <div class="form-group">
+
+                        <label for="tasaInteresAprobacion">
+                            Tasa de interés (%) *
+                        </label>
+
+                        <input type="number" id="tasaInteresAprobacion" min="0" max="100" step="0.01"
+                            placeholder="Ej. 10">
+
+                        <small>
+                            Ingresa el porcentaje de interés que se aplicará al préstamo.
+                        </small>
+
+                    </div>
+
+
+                    <!-- MONTO -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Monto aprobado
+                        </label>
+
+                        <input type="text" id="resumenMontoAprobado" readonly>
+
+                    </div>
+
+
+                    <!-- AVAL -->
+
+                    <div class="form-group">
+
+                        <label for="requiereAval">
+                            Aval
+                        </label>
+
+                        <select id="requiereAval">
+
+                            <option value="0">
+                                No requiere aval
+                            </option>
+
+                            <option value="1">
+                                Sí requiere aval
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- GARANTÍA -->
+
+                    <div class="form-group">
+
+                        <label for="requiereGarantia">
+                            Garantía
+                        </label>
+
+                        <select id="requiereGarantia">
+
+                            <option value="0">
+                                No requiere garantía
+                            </option>
+
+                            <option value="1">
+                                Sí requiere garantía
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 RESUMEN DE CÁLCULOS
+            ================================================== -->
+
+                <div id="resumenCalculosPrestamo" class="info-prestamo">
+
+                    <strong>
+                        Resumen del préstamo
+                    </strong>
+
+                    <br><br>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>
+                                Interés total
+                            </label>
+
+                            <input type="text" id="resumenIntereses" value="$0.00" readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Total a pagar
+                            </label>
+
+                            <input type="text" id="resumenTotalPagar" value="$0.00" readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Número de cuotas
+                            </label>
+
+                            <input type="text" id="resumenNumeroCuotas" value="0" readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Monto aproximado por cuota
+                            </label>
+
+                            <input type="text" id="resumenMontoCuota" value="$0.00" readonly>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 BOTONES APROBAR / RECHAZAR
+            ================================================== -->
+
+                <div class="modal-footer">
+
+                    <button type="button" id="btnRechazarSolicitud" class="btn-secondary" style="display: none;">
+                        Rechazar solicitud
+                    </button>
+
+
+                    <button type="button" id="btnAprobarSolicitud" class="btn-primary" style="display: none;">
+                        Aprobar y generar préstamo
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             MENSAJES DE REVISIÓN
+        ====================================================== -->
+
+            <div id="mensajeRevisionSolicitud" class="mensaje-formulario"></div>
+
+
+            <!-- =====================================================
+             CERRAR
+        ====================================================== -->
+
+            <div class="modal-footer">
+
+                <button type="button" id="cerrarDetalleSolicitud" class="btn-secondary">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/sistema_prestamos/frontend/js/tema.js?v=5"></script>
+    <script src="../js/solicitudes.js?v=3"></script>
+
+</body>
+
+</html>

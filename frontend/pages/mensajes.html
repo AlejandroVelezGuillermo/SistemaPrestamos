@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mensajes | Sistema de Préstamos</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css?v=2">
+
+    <link rel="stylesheet" href="../css/mensajes.css?v=4">
+    <link rel="stylesheet" href="../css/tema.css?v=13">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- ==================================================
+             SIDEBAR
+        =================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="brand-icon">
+                    $
+                </div>
+
+                <div>
+                    <h2>Préstamos</h2>
+                    <span>Sistema de gestión</span>
+                </div>
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <div class="menu-section">
+                    <span class="menu-title">
+                        PRINCIPAL
+                    </span>
+
+                    <a href="dashboard.html" class="menu-item">
+                        <span>🏠</span>
+                        Dashboard
+                    </a>
+                </div>
+
+
+                <div class="menu-section">
+
+                    <span class="menu-title">
+                        GESTIÓN
+                    </span>
+
+                    <a href="clientes.html" class="menu-item">
+                        <span>👥</span>
+                        Clientes
+                    </a>
+
+                    <a href="solicitudes.html" class="menu-item">
+                        <span>📝</span>
+                        Solicitudes
+                    </a>
+
+                    <a href="prestamos.html" class="menu-item">
+                        <span>💰</span>
+                        Préstamos
+                    </a>
+
+                    <a href="pagos.html" class="menu-item">
+                        <span>💳</span>
+                        Pagos
+                    </a>
+
+
+                    <a href="mensajes.html" class="menu-item active">
+                        <span>✉️</span>
+                        Mensajes
+                    </a>
+
+                </div>
+
+
+                <div class="menu-section">
+
+                    <span class="menu-title">
+                        ADMINISTRACIÓN
+                    </span>
+
+                    <a href="usuarios.html" class="menu-item">
+                        <span>👤</span>
+                        Usuarios
+                    </a>
+
+                    <a href="reportes.html" class="menu-item">
+                        <span>📊</span>
+                        Reportes
+                    </a>
+
+                    <a href="configuracion.html" class="menu-item" id="menuConfiguracion">
+                        <span>⚙️</span>
+                        Configuración
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- ==================================================
+             CONTENIDO
+        =================================================== -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div>
+                    <h1>Mensajes</h1>
+
+                    <p>
+                        Comunícate directamente con tus clientes
+                    </p>
+                </div>
+
+
+                <div class="user-info user-info-menu" id="usuarioMenuMensajes">
+
+                    <button type="button" class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <div class="user-avatar" id="avatarUsuario">
+                        A
+                    </div>
+
+                    <div class="user-data">
+
+                        <strong id="nombreUsuario">
+                            Cargando...
+                        </strong>
+
+                        <span id="rolUsuario">
+                            Cargando...
+                        </span>
+
+                    </div>
+
+                    <span class="user-menu-flecha">
+                        ▼
+                    </span>
+
+                    <div class="user-dropdown" id="usuarioDropdown">
+
+                        <button type="button" id="logoutButtonPerfil">
+                            <span>🚪</span>
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ==================================================
+                 CONTENIDO DE MENSAJES
+            =================================================== -->
+
+            <section class="mensajes-content">
+
+
+                <!-- ENCABEZADO -->
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>
+                            Centro de mensajes
+                        </h2>
+
+                        <p>
+                            Envía avisos y comunicaciones directamente
+                            al portal de tus clientes.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     TARJETAS RESUMEN
+                =================================================== -->
+
+                <div class="mensajes-stats">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            👥
+                        </div>
+
+                        <div>
+                            <span>
+                                Clientes disponibles
+                            </span>
+
+                            <strong id="totalClientes">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            ✉️
+                        </div>
+
+                        <div>
+                            <span>
+                                Mensajes enviados
+                            </span>
+
+                            <strong id="totalMensajes">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            👁️
+                        </div>
+
+                        <div>
+                            <span>
+                                Mensajes leídos
+                            </span>
+
+                            <strong id="totalLeidos">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            🔔
+                        </div>
+
+                        <div>
+                            <span>
+                                Sin leer
+                            </span>
+
+                            <strong id="totalNoLeidos">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     CLIENTES
+                =================================================== -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Clientes
+                            </h3>
+
+                            <p>
+                                Selecciona un cliente para enviarle
+                                un mensaje.
+                            </p>
+                        </div>
+
+
+                        <div class="buscador-container">
+
+                            <span class="buscador-icon">
+                                🔎
+                            </span>
+
+                            <input type="text" id="buscarCliente" placeholder="Buscar por nombre o correo..."
+                                autocomplete="off">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="clientes-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Correo</th>
+                                    <th>Teléfono</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaClientes">
+
+                                <tr>
+
+                                    <td colspan="5" class="table-message">
+                                        Cargando clientes...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     HISTORIAL DE MENSAJES
+                =================================================== -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Mensajes enviados
+                            </h3>
+
+                            <p>
+                                Consulta las comunicaciones enviadas
+                                recientemente.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="mensajes-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Asunto</th>
+                                    <th>Enviado por</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaMensajes">
+
+                                <tr>
+
+                                    <td colspan="6" class="table-message">
+                                        Cargando mensajes...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==========================================================
+         MODAL ENVIAR MENSAJE
+    =========================================================== -->
+
+    <div class="modal-overlay" id="modalMensaje">
+
+        <div class="modal-container">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-label">
+                        NUEVO MENSAJE
+                    </span>
+
+                    <h2>
+                        Enviar mensaje
+                    </h2>
+
+                </div>
+
+
+                <button type="button" class="modal-close" id="cerrarModal" aria-label="Cerrar">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <!-- DESTINATARIO -->
+
+                <div class="destinatario-card">
+
+                    <div class="cliente-avatar" id="modalAvatar">
+                        C
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Destinatario
+                        </span>
+
+                        <strong id="modalNombreCliente">
+                            Cliente
+                        </strong>
+
+                        <small id="modalCorreoCliente">
+                            correo@cliente.com
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <form id="formMensaje">
+
+                    <input type="hidden" id="idCliente">
+
+
+                    <div class="form-group">
+
+                        <label for="asunto">
+                            Asunto
+                        </label>
+
+                        <input type="text" id="asunto" maxlength="150" placeholder="Ej. Recordatorio de próximo pago"
+                            required>
+
+                        <div class="campo-info">
+
+                            <small>
+                                Escribe un asunto claro y breve.
+                            </small>
+
+                            <small id="contadorAsunto">
+                                0 / 150
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="mensaje">
+                            Mensaje
+                        </label>
+
+                        <textarea id="mensaje" rows="7" placeholder="Escribe aquí el mensaje que recibirá el cliente..."
+                            required></textarea>
+
+                    </div>
+
+
+                    <div class="form-alert" id="mensajeFormulario"></div>
+
+
+                    <div class="modal-actions">
+
+                        <button type="button" class="btn-secondary" id="cancelarMensaje">
+                            Cancelar
+                        </button>
+
+
+                        <button type="submit" class="btn-primary" id="btnEnviarMensaje">
+                            <span>✉️</span>
+                            Enviar mensaje
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================================
+         MODAL VER MENSAJE
+    =========================================================== -->
+
+    <div class="modal-overlay" id="modalDetalle">
+
+        <div class="modal-container modal-detalle">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-label">
+                        MENSAJE ENVIADO
+                    </span>
+
+                    <h2 id="detalleAsunto">
+                        Asunto
+                    </h2>
+
+                </div>
+
+
+                <button type="button" class="modal-close" id="cerrarDetalle" aria-label="Cerrar">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <!-- ======================================================
+         INFORMACIÓN DEL MENSAJE
+    ======================================================= -->
+
+                <div class="detalle-meta">
+
+                    <div>
+                        <span>Cliente</span>
+                        <strong id="detalleCliente">-</strong>
+                    </div>
+
+
+                    <div>
+                        <span>Enviado por</span>
+                        <strong id="detalleEmisor">-</strong>
+                    </div>
+
+
+                    <div>
+                        <span>Fecha</span>
+                        <strong id="detalleFecha">-</strong>
+                    </div>
+
+
+                    <div>
+                        <span>Estado</span>
+                        <strong id="detalleEstado">-</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- ======================================================
+         MENSAJE ORIGINAL
+    ======================================================= -->
+
+                <div class="detalle-mensaje">
+
+                    <span>
+                        Mensaje original
+                    </span>
+
+                    <p id="detalleMensaje">
+                        -
+                    </p>
+
+                </div>
+
+
+                <!-- ======================================================
+         CONVERSACIÓN
+    ======================================================= -->
+
+                <div class="detalle-conversacion">
+
+                    <div class="detalle-conversacion-titulo">
+
+                        <div>
+                            <strong>
+                                Conversación
+                            </strong>
+
+                            <p>
+                                Respuestas entre el cliente y administración.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div id="detalleConversacion" class="detalle-conversacion-lista">
+
+                        <div class="conversacion-vacia">
+                            Cargando conversación...
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ======================================================
+         RESPONDER
+    ======================================================= -->
+
+                <form id="formResponderMensaje" class="form-responder-mensaje">
+
+                    <input type="hidden" id="idMensajeRespuesta">
+
+
+                    <label for="textoRespuestaMensaje">
+                        Responder
+                    </label>
+
+
+                    <textarea id="textoRespuestaMensaje" rows="4" maxlength="5000"
+                        placeholder="Escribe una respuesta para el cliente..." required></textarea>
+
+
+                    <div id="estadoRespuestaMensaje" class="estado-respuesta-mensaje"></div>
+
+
+                    <div class="modal-actions">
+
+                        <button type="submit" class="btn-primary" id="btnEnviarRespuesta">
+                            <span>↩️</span>
+                            Enviar respuesta
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/sistema_prestamos/frontend/js/tema.js?v=5"></script>
+    <script src="../js/mensajes.js?v=6"></script>
+
+</body>
+
+</html>

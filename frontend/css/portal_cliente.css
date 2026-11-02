@@ -1,0 +1,2228 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f5f7fb;
+
+    color: #1e293b;
+}
+
+
+/* ============================================================
+   ESTRUCTURA GENERAL
+============================================================ */
+
+.cliente-app {
+    display: flex;
+
+    min-height: 100vh;
+}
+
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+
+.cliente-sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 250px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #0f172a;
+
+    color: #ffffff;
+
+    z-index: 100;
+}
+
+.cliente-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 24px 20px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 23px;
+
+    font-weight: bold;
+}
+
+.cliente-logo h2 {
+    font-size: 17px;
+
+    margin-bottom: 3px;
+}
+
+.cliente-logo span {
+    font-size: 11px;
+
+    color: #94a3b8;
+}
+
+
+/* ============================================================
+   MENÚ
+============================================================ */
+
+.cliente-menu {
+    flex: 1;
+
+    padding: 20px 12px;
+}
+
+.menu-titulo {
+    padding: 0 12px;
+
+    margin-bottom: 10px;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 0.7px;
+}
+
+.menu-item {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 14px;
+
+    margin-bottom: 5px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #ffffff;
+}
+
+.menu-item.active {
+    background: #2563eb;
+
+    color: #ffffff;
+}
+
+.menu-item span {
+    width: 20px;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   CERRAR SESIÓN
+============================================================ */
+
+.cliente-sidebar-footer {
+    padding: 15px 12px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-logout {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #cbd5e1;
+
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    background: rgba(239, 68, 68, 0.12);
+
+    color: #fca5a5;
+}
+
+
+/* ============================================================
+   CONTENIDO PRINCIPAL
+============================================================ */
+
+.cliente-main {
+    width: calc(100% - 250px);
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+}
+
+
+/* ============================================================
+   TOPBAR
+============================================================ */
+
+.cliente-topbar {
+    min-height: 82px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 17px 28px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.cliente-topbar h1 {
+    margin-bottom: 4px;
+
+    color: #0f172a;
+
+    font-size: 22px;
+}
+
+.cliente-topbar p {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.cliente-usuario {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.cliente-avatar {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-weight: bold;
+}
+
+.cliente-usuario > div:last-child {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.cliente-usuario strong {
+    color: #0f172a;
+
+    font-size: 12px;
+}
+
+.cliente-usuario span {
+    margin-top: 2px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   CONTENIDO
+============================================================ */
+
+.cliente-contenido {
+    padding: 25px 28px 40px;
+}
+
+
+/* ============================================================
+   SELECTOR DE PRÉSTAMO
+============================================================ */
+
+.selector-prestamo-card {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px 18px;
+
+    margin-bottom: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+}
+
+.selector-prestamo-card > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.selector-label {
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.selector-prestamo-card strong {
+    color: #0f172a;
+
+    font-size: 13px;
+}
+
+.selector-prestamo-card select {
+    min-width: 250px;
+
+    height: 40px;
+
+    padding: 0 11px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #0f172a;
+
+    outline: none;
+}
+
+.selector-prestamo-card select:focus {
+    border-color: #2563eb;
+}
+
+
+/* ============================================================
+   SECCIONES
+============================================================ */
+
+.seccion-cliente {
+    display: none;
+}
+
+.seccion-cliente.active {
+    display: block;
+}
+
+
+/* ============================================================
+   RESUMEN
+============================================================ */
+
+.resumen-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+.resumen-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 100px;
+
+    padding: 17px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+}
+
+.resumen-icon {
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 10px;
+
+    background: #eff6ff;
+
+    font-size: 20px;
+}
+
+.resumen-card > div:last-child {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.resumen-card span {
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.resumen-card strong {
+    color: #0f172a;
+
+    font-size: 18px;
+
+    word-break: break-word;
+}
+
+
+/* ============================================================
+   PANELES
+============================================================ */
+
+.panel-cliente {
+    margin-bottom: 18px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+}
+
+.panel-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.panel-header h2 {
+    margin-bottom: 4px;
+
+    color: #0f172a;
+
+    font-size: 16px;
+}
+
+.panel-header p {
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   PROGRESO
+============================================================ */
+
+.progreso-panel {
+    padding-bottom: 20px;
+}
+
+.progreso-panel .panel-header {
+    border-bottom: none;
+
+    padding-bottom: 12px;
+}
+
+.porcentaje-pagado {
+    color: #2563eb;
+
+    font-size: 20px;
+}
+
+.barra-progreso {
+    height: 10px;
+
+    margin: 0 20px;
+
+    overflow: hidden;
+
+    background: #e2e8f0;
+
+    border-radius: 20px;
+}
+
+.barra-progreso-valor {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background: #2563eb;
+
+    transition: width 0.4s ease;
+}
+
+.progreso-datos {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin: 18px 20px 0;
+}
+
+.progreso-datos > div {
+    padding: 12px;
+
+    background: #f8fafc;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.progreso-datos span {
+    color: #64748b;
+
+    font-size: 10px;
+}
+
+.progreso-datos strong {
+    color: #0f172a;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   PRÓXIMA CUOTA
+============================================================ */
+
+.proxima-cuota {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    padding: 20px;
+}
+
+.proxima-cuota > div {
+    padding: 15px;
+
+    background: #f8fafc;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.proxima-cuota span {
+    color: #64748b;
+
+    font-size: 10px;
+}
+
+.proxima-cuota strong {
+    color: #0f172a;
+
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   DETALLE PRÉSTAMO
+============================================================ */
+
+.detalle-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 0;
+}
+
+.detalle-item {
+    min-height: 92px;
+
+    padding: 18px 20px;
+
+    border-right: 1px solid #e2e8f0;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.detalle-item:nth-child(3n) {
+    border-right: none;
+}
+
+.detalle-item span {
+    color: #64748b;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+}
+
+.detalle-item strong {
+    color: #0f172a;
+
+    font-size: 15px;
+}
+
+.detalle-item.destacado {
+    background: #eff6ff;
+}
+
+.detalle-item.destacado strong {
+    color: #1d4ed8;
+
+    font-size: 18px;
+}
+
+
+/* ============================================================
+   TABLAS
+============================================================ */
+
+.tabla-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.tabla-cliente {
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: collapse;
+}
+
+.tabla-cliente th {
+    padding: 12px 13px;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-cliente td {
+    padding: 13px;
+
+    color: #334155;
+
+    font-size: 11px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    vertical-align: middle;
+}
+
+.tabla-cliente tbody tr:hover {
+    background: #f8fafc;
+}
+
+.tabla-mensaje {
+    padding: 30px !important;
+
+    text-align: center;
+
+    color: #64748b !important;
+}
+
+
+/* ============================================================
+   ESTADOS DE CUOTAS/PAGOS
+============================================================ */
+
+.estado-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+.estado-pagada,
+.estado-confirmado,
+.estado-liquidado,
+.estado-activo {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+.estado-pendiente {
+    background: #fef3c7;
+
+    color: #92400e;
+}
+
+.estado-parcial {
+    background: #dbeafe;
+
+    color: #1d4ed8;
+}
+
+.estado-vencida,
+.estado-atrasado,
+.estado-cancelado {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+
+/* ============================================================
+   SIN PRÉSTAMOS
+============================================================ */
+
+.sin-prestamos {
+    display: none;
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+}
+
+.sin-prestamos.show {
+    display: block;
+}
+
+.sin-prestamos-icon {
+    margin-bottom: 15px;
+
+    font-size: 42px;
+}
+
+.sin-prestamos h2 {
+    margin-bottom: 7px;
+
+    color: #0f172a;
+}
+
+.sin-prestamos p {
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   MENSAJES
+============================================================ */
+
+.mensaje-portal {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px 14px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+}
+
+.mensaje-portal.error {
+    display: block;
+
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+.mensaje-portal.exito {
+    display: block;
+
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1100px) {
+
+    .resumen-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detalle-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detalle-item:nth-child(3n) {
+        border-right: 1px solid #e2e8f0;
+    }
+
+    .detalle-item:nth-child(2n) {
+        border-right: none;
+    }
+
+    .progreso-datos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .cliente-sidebar {
+        width: 210px;
+    }
+
+    .cliente-main {
+        width: calc(100% - 210px);
+
+        margin-left: 210px;
+    }
+
+    .selector-prestamo-card {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    .selector-prestamo-card select {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+    .proxima-cuota {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .cliente-app {
+        display: block;
+    }
+
+    .cliente-sidebar {
+        position: static;
+
+        width: 100%;
+
+        height: auto;
+    }
+
+    .cliente-logo {
+        padding: 15px;
+    }
+
+    .cliente-menu {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 5px;
+
+        padding: 10px;
+    }
+
+    .menu-titulo {
+        display: none;
+    }
+
+    .menu-item {
+        margin: 0;
+
+        justify-content: center;
+    }
+
+    .cliente-sidebar-footer {
+        padding: 10px;
+    }
+
+    .btn-logout {
+        justify-content: center;
+    }
+
+    .cliente-main {
+        width: 100%;
+
+        margin-left: 0;
+    }
+
+    .cliente-topbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 16px;
+    }
+
+    .cliente-contenido {
+        padding: 15px;
+    }
+
+    .resumen-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detalle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detalle-item,
+    .detalle-item:nth-child(2n),
+    .detalle-item:nth-child(3n) {
+        border-right: none;
+    }
+
+    .progreso-datos {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================================
+   MENSAJES DEL CLIENTE
+========================================================= */
+
+.mensajes-resumen-cliente {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #f3f6fb;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #5f6b7a;
+}
+
+.mensajes-resumen-cliente strong {
+    font-size: 18px;
+    color: #111827;
+}
+
+.contador-mensajes {
+    margin-left: auto;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 7px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 999px;
+
+    background: #ef4444;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   LISTA
+========================================================= */
+
+.lista-mensajes-cliente {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
+}
+
+
+/* =========================================================
+   TARJETA
+========================================================= */
+
+.mensaje-cliente-card {
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e7ef;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.mensaje-cliente-card:hover {
+    border-color: #c9d5e6;
+
+    box-shadow:
+        0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+.mensaje-cliente-card.no-leido {
+    border-left: 4px solid #2f6fed;
+    background: #fbfdff;
+}
+
+.mensaje-cliente-card.leido {
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   CABECERA DEL MENSAJE
+========================================================= */
+
+.mensaje-cliente-cabecera {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-family: inherit;
+}
+
+.mensaje-cliente-cabecera:hover {
+    background: #f8fafc;
+}
+
+
+/* =========================================================
+   ICONO
+========================================================= */
+
+.mensaje-cliente-icono {
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #edf4ff;
+
+    font-size: 22px;
+}
+
+
+/* =========================================================
+   INFORMACIÓN
+========================================================= */
+
+.mensaje-cliente-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.mensaje-cliente-titulo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-bottom: 5px;
+}
+
+.mensaje-cliente-titulo strong {
+    color: #111827;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+.mensaje-cliente-info p {
+    margin: 0 0 4px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.mensaje-cliente-info small {
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   NUEVO
+========================================================= */
+
+.mensaje-nuevo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 21px;
+
+    padding: 3px 8px;
+
+    border-radius: 999px;
+
+    background: #eaf1ff;
+    color: #2563eb;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+}
+
+
+/* =========================================================
+   FLECHA
+========================================================= */
+
+.mensaje-cliente-flecha {
+    flex-shrink: 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    transition: transform 0.25s ease;
+}
+
+.mensaje-cliente-card.abierto
+.mensaje-cliente-flecha {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   CONTENIDO DEL MENSAJE
+========================================================= */
+
+.mensaje-cliente-contenido {
+    display: none;
+
+    border-top: 1px solid #edf1f5;
+
+    background: #fafbfc;
+}
+
+.mensaje-cliente-card.abierto
+.mensaje-cliente-contenido {
+    display: block;
+}
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.mensaje-cliente-texto {
+    padding: 20px;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.mensaje-cliente-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    padding:
+        0 20px 16px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MENSAJE VACÍO
+========================================================= */
+
+.mensaje-vacio {
+    padding: 50px 20px;
+
+    text-align: center;
+
+    color: #64748b;
+}
+
+.mensaje-vacio > div:first-child {
+    margin-bottom: 12px;
+
+    font-size: 38px;
+}
+
+.mensaje-vacio strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #1e293b;
+
+    font-size: 16px;
+}
+
+.mensaje-vacio p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .mensaje-cliente-cabecera {
+        padding: 15px;
+        gap: 11px;
+    }
+
+    .mensaje-cliente-icono {
+        width: 40px;
+        height: 40px;
+
+        font-size: 19px;
+    }
+
+    .mensaje-cliente-texto {
+        padding: 16px;
+    }
+
+    .mensajes-resumen-cliente {
+        margin-top: 10px;
+    }
+}
+
+/* ============================================================
+   MENÚ DE PERFIL DEL CLIENTE
+============================================================ */
+
+.cliente-usuario-menu {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cliente-usuario-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cliente-menu-flecha {
+    margin-left: 8px;
+    font-size: 11px;
+    transition: transform 0.2s ease;
+}
+
+.cliente-usuario-menu.activo .cliente-menu-flecha {
+    transform: rotate(180deg);
+}
+
+.cliente-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+
+    width: 220px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+    padding: 8px;
+
+    display: none;
+
+    z-index: 1000;
+}
+
+.cliente-usuario-menu.activo .cliente-dropdown {
+    display: block;
+}
+
+.cliente-dropdown button {
+    width: 100%;
+
+    border: none;
+    background: transparent;
+
+    padding: 11px 12px;
+
+    border-radius: 8px;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.cliente-dropdown button:hover {
+    background: #f3f4f6;
+}
+
+#btnCerrarSesionPerfil {
+    color: #dc2626;
+}
+
+/* ============================================================
+   FORZAR OCULTAR / MOSTRAR MENÚ DE PERFIL
+============================================================ */
+
+#clienteDropdown {
+    display: none !important;
+}
+
+#clienteUsuarioMenu.activo #clienteDropdown {
+    display: block !important;
+}
+
+/* ============================================================
+   MODAL MI PERFIL
+============================================================ */
+
+.modal-perfil {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    z-index: 2000;
+}
+
+.modal-perfil.activo {
+    display: flex;
+}
+
+.modal-perfil-contenido {
+    width: 100%;
+    max-width: 450px;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.20);
+}
+
+.modal-perfil-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.modal-perfil-header h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.modal-perfil-header p {
+    margin: 5px 0 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.btn-cerrar-perfil {
+    border: none;
+    background: #f3f4f6;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.btn-cerrar-perfil:hover {
+    background: #e5e7eb;
+}
+
+.perfil-avatar-grande {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.perfil-nombre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.perfil-nombre strong {
+    font-size: 18px;
+}
+
+.perfil-nombre span {
+    margin-top: 3px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.perfil-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.perfil-dato {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    padding: 14px;
+
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.perfil-dato span {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.perfil-dato strong {
+    font-size: 14px;
+    word-break: break-word;
+}
+
+/* ============================================================
+   MODAL CAMBIAR CONTRASEÑA
+============================================================ */
+
+#formCambiarPassword {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#formCambiarPassword .perfil-dato {
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+#formCambiarPassword .perfil-dato span {
+    display: block;
+    margin-bottom: 6px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #64748b;
+}
+
+#formCambiarPassword input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 11px 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    font-size: 14px;
+    color: #1e293b;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#formCambiarPassword input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.btn-guardar-password {
+    width: 100%;
+
+    margin-top: 4px;
+
+    padding: 12px 16px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+.btn-guardar-password:hover {
+    background: #1d4ed8;
+}
+
+.btn-guardar-password:active {
+    transform: scale(0.99);
+}
+
+
+/* ============================================================
+   MENSAJES DEL CAMBIO DE CONTRASEÑA
+============================================================ */
+
+#mensajeCambiarPassword {
+    display: none;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+#mensajeCambiarPassword.error {
+    display: block;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    border: 1px solid #fecaca;
+}
+
+#mensajeCambiarPassword.exito {
+    display: block;
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+    border: 1px solid #bbf7d0;
+}
+
+/* ============================================================
+   CONVERSACIÓN / RESPUESTAS DE MENSAJES
+============================================================ */
+
+.mensaje-conversacion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 16px 20px 5px;
+
+    border-top: 1px solid #e5e7eb;
+
+    background: #f8fafc;
+}
+
+
+/* ============================================================
+   MENSAJE DE CARGA / VACÍO / ERROR
+============================================================ */
+
+.mensaje-conversacion-cargando,
+.mensaje-conversacion-vacia,
+.mensaje-conversacion-error {
+    padding: 14px;
+
+    border-radius: 9px;
+
+    text-align: center;
+
+    font-size: 12px;
+}
+
+.mensaje-conversacion-cargando {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.mensaje-conversacion-vacia {
+    background: #ffffff;
+
+    border: 1px dashed #cbd5e1;
+
+    color: #64748b;
+}
+
+.mensaje-conversacion-error {
+    background: #fee2e2;
+
+    border: 1px solid #fecaca;
+
+    color: #b91c1c;
+}
+
+
+/* ============================================================
+   BURBUJAS DE CONVERSACIÓN
+============================================================ */
+
+.respuesta-conversacion {
+    width: fit-content;
+    max-width: 75%;
+
+    padding: 11px 14px;
+
+    border-radius: 13px;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+
+    word-break: break-word;
+}
+
+
+/* ============================================================
+   RESPUESTAS DE ADMINISTRACIÓN / GERENTE
+============================================================ */
+
+.respuesta-administracion {
+    align-self: flex-start;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe3ee;
+
+    border-bottom-left-radius: 4px;
+}
+
+
+/* ============================================================
+   RESPUESTAS DEL CLIENTE
+============================================================ */
+
+.respuesta-cliente {
+    align-self: flex-end;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    border-bottom-right-radius: 4px;
+}
+
+
+/* ============================================================
+   CABECERA DE RESPUESTA
+============================================================ */
+
+.respuesta-cabecera {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 6px;
+}
+
+.respuesta-cabecera strong {
+    font-size: 12px;
+}
+
+.respuesta-cabecera span {
+    padding: 2px 7px;
+
+    border-radius: 999px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+/* Administración */
+
+.respuesta-administracion
+.respuesta-cabecera strong {
+    color: #0f172a;
+}
+
+.respuesta-administracion
+.respuesta-cabecera span {
+    background: #e0e7ff;
+
+    color: #4338ca;
+}
+
+
+/* Cliente */
+
+.respuesta-cliente
+.respuesta-cabecera strong {
+    color: #ffffff;
+}
+
+.respuesta-cliente
+.respuesta-cabecera span {
+    background: rgba(255, 255, 255, 0.18);
+
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   TEXTO DE LA RESPUESTA
+============================================================ */
+
+.respuesta-texto {
+    white-space: pre-wrap;
+}
+
+.respuesta-administracion
+.respuesta-texto {
+    color: #334155;
+}
+
+.respuesta-cliente
+.respuesta-texto {
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   FECHA
+============================================================ */
+
+.respuesta-conversacion small {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 10px;
+}
+
+.respuesta-administracion small {
+    color: #94a3b8;
+}
+
+.respuesta-cliente small {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* ============================================================
+   FORMULARIO PARA RESPONDER
+============================================================ */
+
+.form-respuesta-mensaje {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin: 15px 20px 10px;
+
+    padding: 15px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+}
+
+
+/* ============================================================
+   TEXTAREA
+============================================================ */
+
+.input-respuesta-mensaje {
+    width: 100%;
+
+    min-height: 85px;
+
+    resize: vertical;
+
+    padding: 11px 12px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #1e293b;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.input-respuesta-mensaje:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.input-respuesta-mensaje::placeholder {
+    color: #94a3b8;
+}
+
+
+/* ============================================================
+   BOTÓN RESPONDER
+============================================================ */
+
+.btn-responder-mensaje {
+    align-self: flex-end;
+
+    min-width: 145px;
+
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+.btn-responder-mensaje:hover {
+    background: #1d4ed8;
+}
+
+.btn-responder-mensaje:active {
+    transform: scale(0.98);
+}
+
+.btn-responder-mensaje:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+/* ============================================================
+   ESTADO DE ENVÍO
+============================================================ */
+
+.estado-respuesta-mensaje {
+    min-height: 16px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   MENSAJE ORIGINAL
+============================================================ */
+
+.mensaje-cliente-texto {
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* ============================================================
+   RESPONSIVE CONVERSACIÓN
+============================================================ */
+
+@media (max-width: 700px) {
+
+    .mensaje-conversacion {
+        padding:
+            14px 14px 5px;
+    }
+
+    .respuesta-conversacion {
+        max-width: 88%;
+    }
+
+    .form-respuesta-mensaje {
+        margin:
+            14px 14px 10px;
+
+        padding: 12px;
+    }
+
+    .btn-responder-mensaje {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   RESPUESTAS NUEVAS EN MENSAJES
+   ========================================================= */
+
+.mensaje-respuesta-nueva-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #fee2e2;
+    color: #b91c1c;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+/* ============================================================
+   MODO OSCURO - MENSAJES DEL CLIENTE
+   ============================================================ */
+
+body.dark-mode .mensaje-cliente-card {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode .mensaje-cliente-card.no-leido {
+    background: #1e293b;
+    border-left-color: #3b82f6;
+}
+
+body.dark-mode .mensaje-cliente-cabecera:hover {
+    background: #263449;
+}
+
+body.dark-mode .mensaje-cliente-titulo strong {
+    color: #f8fafc;
+}
+
+body.dark-mode .mensaje-cliente-info p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .mensaje-cliente-info small {
+    color: #94a3b8;
+}
+
+
+/* CONTENIDO DEL MENSAJE */
+
+body.dark-mode .mensaje-cliente-contenido {
+    background: #172033;
+    border-top-color: #334155;
+}
+
+body.dark-mode .mensaje-cliente-texto {
+    background: #172033;
+    color: #e2e8f0;
+    border-bottom-color: #334155;
+}
+
+
+/* CONVERSACIÓN */
+
+body.dark-mode .mensaje-conversacion {
+    background: #172033;
+    border-top-color: #334155;
+}
+
+
+/* RESPUESTA DEL ADMINISTRADOR */
+
+body.dark-mode .respuesta-administracion {
+    background: #263449;
+    border-color: #3b4b63;
+}
+
+body.dark-mode
+.respuesta-administracion
+.respuesta-cabecera strong {
+    color: #f8fafc;
+}
+
+body.dark-mode
+.respuesta-administracion
+.respuesta-texto {
+    color: #e2e8f0;
+}
+
+body.dark-mode
+.respuesta-administracion small {
+    color: #94a3b8;
+}
+
+
+/* FORMULARIO PARA RESPONDER */
+
+body.dark-mode .form-respuesta-mensaje {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode .input-respuesta-mensaje {
+    background: #0f172a;
+    color: #f8fafc;
+    border-color: #334155;
+}
+
+body.dark-mode .input-respuesta-mensaje:hover {
+    border-color: #475569;
+}
+
+body.dark-mode .input-respuesta-mensaje:focus {
+    border-color: #3b82f6;
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+body.dark-mode .input-respuesta-mensaje::placeholder {
+    color: #64748b;
+}
+
+body.dark-mode .estado-respuesta-mensaje {
+    color: #94a3b8;
+}
+
+
+/* RESPUESTAS NUEVAS */
+
+body.dark-mode .mensaje-respuesta-nueva-badge {
+    background: rgba(239, 68, 68, 0.18);
+    color: #fca5a5;
+}

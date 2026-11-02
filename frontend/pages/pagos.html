@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pagos | Sistema de Préstamos</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css?v=2">
+
+    <link rel="stylesheet" href="../css/pagos.css">
+    <link rel="stylesheet" href="../css/tema.css?v=12">
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="logo">
+                    $
+                </div>
+
+                <div>
+                    <h2>Préstamos</h2>
+                    <span>Sistema de gestión</span>
+                </div>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <p class="menu-title">
+                    PRINCIPAL
+                </p>
+
+                <a href="dashboard.html" class="menu-item">
+                    <span>📊</span>
+                    Dashboard
+                </a>
+
+
+                <p class="menu-title">
+                    GESTIÓN
+                </p>
+
+                <a href="clientes.html" class="menu-item">
+                    <span>👥</span>
+                    Clientes
+                </a>
+
+                <a href="solicitudes.html" class="menu-item">
+                    <span>📝</span>
+                    Solicitudes
+                </a>
+
+                <a href="prestamos.html" class="menu-item">
+                    <span>💰</span>
+                    Préstamos
+                </a>
+
+                <a href="pagos.html" class="menu-item active">
+                    <span>💵</span>
+                    Pagos
+                </a>
+
+                <a href="mensajes.html" class="menu-item" class="menu-item active">
+                    <span>✉️</span>
+                    Mensajes
+                </a>
+
+
+                <p class="menu-title">
+                    ADMINISTRACIÓN
+                </p>
+
+                <a href="usuarios.html" class="menu-item">
+                    <span>👤</span>
+                    Usuarios
+                </a>
+
+                <a href="reportes.html" class="menu-item">
+                    <span>📈</span>
+                    Reportes
+                </a>
+
+                <a href="configuracion.html" class="menu-item">
+                    <span>⚙️</span>
+                    Configuración
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- =========================================================
+         CONTENIDO
+    ========================================================== -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>
+                        Pagos
+                    </h1>
+
+                    <p>
+                        Registro y seguimiento de pagos de préstamos
+                    </p>
+
+                </div>
+
+
+                <div class="user-info user-info-menu" id="usuarioMenu">
+
+
+                    <button type="button" class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <div class="user-avatar" id="avatarUsuario">
+                        A
+                    </div>
+
+                    <div class="user-data">
+
+                        <strong id="nombreUsuario">
+                            Cargando...
+                        </strong>
+
+                        <span id="rolUsuario">
+                            Cargando...
+                        </span>
+
+                    </div>
+
+                    <span class="user-menu-flecha">
+                        ▼
+                    </span>
+
+                    <div class="user-dropdown" id="usuarioDropdown">
+
+                        <button type="button" id="logoutButtonPerfil">
+                            <span>🚪</span>
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="content">
+
+                <!-- =================================================
+                 ENCABEZADO
+            ================================================== -->
+
+                <div class="pagos-header">
+
+                    <div>
+
+                        <h2>
+                            Préstamos activos
+                        </h2>
+
+                        <p>
+                            Selecciona un préstamo para consultar sus cuotas y registrar pagos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 RESUMEN GENERAL
+            ================================================== -->
+
+                <div class="pagos-resumen">
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Préstamos activos
+                        </span>
+
+                        <strong id="totalPrestamosActivos">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Total por cobrar
+                        </span>
+
+                        <strong id="totalPorCobrar">
+                            $0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Total pagado
+                        </span>
+
+                        <strong id="totalPagadoGeneral">
+                            $0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 LISTA DE PRÉSTAMOS
+            ================================================== -->
+
+                <div class="pagos-panel">
+
+                    <div class="pagos-toolbar">
+
+                        <input type="text" id="buscadorPagos" placeholder="Buscar por préstamo, cliente o correo...">
+
+                    </div>
+
+
+                    <div id="mensajePagos" class="mensaje-pagos"></div>
+
+
+                    <div class="tabla-container">
+
+                        <table class="tabla-pagos">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Préstamo</th>
+                                    <th>Cliente</th>
+                                    <th>Total</th>
+                                    <th>Cuotas</th>
+                                    <th>Frecuencia</th>
+                                    <th>Inicio</th>
+                                    <th>Vencimiento</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaPrestamosPagoBody">
+
+                                <tr>
+
+                                    <td colspan="8" class="tabla-cargando">
+                                        Cargando préstamos...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 HISTORIAL DE PAGOS
+            ================================================== -->
+
+                <div class="pagos-header historial-header">
+
+                    <div>
+
+                        <h2>
+                            Historial de pagos
+                        </h2>
+
+                        <p>
+                            Últimos pagos registrados en el sistema.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pagos-panel">
+
+                    <div class="tabla-container">
+
+                        <table class="tabla-pagos">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Pago</th>
+                                    <th>Cliente</th>
+                                    <th>Préstamo</th>
+                                    <th>Cuota</th>
+                                    <th>Monto</th>
+                                    <th>Método</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaHistorialPagosBody">
+
+                                <tr>
+
+                                    <td colspan="8" class="tabla-cargando">
+                                        Cargando historial...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL CUOTAS / PAGOS
+============================================================== -->
+
+    <div id="modalPagos" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content modal-pagos-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Estado del préstamo
+                    </h2>
+
+                    <p id="detallePrestamoPagoId">
+                        Préstamo
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalPagos" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- =====================================================
+             CLIENTE Y PRÉSTAMO
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Información del préstamo
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Cliente
+                        </label>
+
+                        <input id="detalleClientePago" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Tipo de préstamo
+                        </label>
+
+                        <input id="detalleTipoPago" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Total a pagar
+                        </label>
+
+                        <input id="detalleTotalPrestamo" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Monto por cuota
+                        </label>
+
+                        <input id="detalleMontoCuotaPago" type="text" readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             RESUMEN DEL PRÉSTAMO
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Resumen de pagos
+                </h3>
+
+
+                <div class="pagos-resumen pagos-resumen-modal">
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Cuotas pagadas
+                        </span>
+
+                        <strong id="resumenCuotasPagadas">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Cuotas pendientes
+                        </span>
+
+                        <strong id="resumenCuotasPendientes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Pagado
+                        </span>
+
+                        <strong id="resumenTotalPagado">
+                            $0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resumen-card">
+
+                        <span>
+                            Saldo pendiente
+                        </span>
+
+                        <strong id="resumenSaldoPendiente">
+                            $0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+             CUOTAS
+        ====================================================== -->
+
+            <div class="form-section">
+
+                <h3>
+                    Cuotas
+                </h3>
+
+
+                <div class="tabla-container">
+
+                    <table class="tabla-pagos tabla-cuotas-pagos">
+
+                        <thead>
+
+                            <tr>
+                                <th>#</th>
+                                <th>Vencimiento</th>
+                                <th>Total</th>
+                                <th>Pagado</th>
+                                <th>Saldo</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="tablaCuotasPagoBody">
+
+                            <tr>
+
+                                <td colspan="7" class="tabla-vacia">
+                                    Sin cuotas disponibles.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" id="cerrarDetallePagos" class="btn-secondary">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL REGISTRAR PAGO
+============================================================== -->
+
+    <div id="modalRegistrarPago" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content modal-pago-pequeno">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Registrar pago
+                    </h2>
+
+                    <p id="detalleCuotaSeleccionada">
+                        Cuota
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalRegistrarPago" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Total de la cuota
+                        </label>
+
+                        <input id="pagoTotalCuota" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Saldo pendiente
+                        </label>
+
+                        <input id="pagoSaldoCuota" type="text" readonly>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="montoPago">
+                            Monto a pagar *
+                        </label>
+
+                        <input id="montoPago" type="number" min="0.01" step="0.01" placeholder="0.00">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="metodoPago">
+                            Método de pago *
+                        </label>
+
+                        <select id="metodoPago">
+
+                            <option value="">
+                                Selecciona...
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="fechaPago">
+                            Fecha de pago *
+                        </label>
+
+                        <input id="fechaPago" type="date">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="referenciaPago">
+                            Referencia
+                        </label>
+
+                        <input id="referenciaPago" type="text" maxlength="100"
+                            placeholder="Folio, autorización o referencia...">
+
+                    </div>
+
+
+                    <div class="form-group form-group-full">
+
+                        <label for="comprobantePago">
+                            Comprobante
+                        </label>
+
+                        <input id="comprobantePago" type="text" maxlength="255"
+                            placeholder="Ej. recibo-001, voucher-001...">
+
+                    </div>
+
+
+                    <div class="form-group form-group-full">
+
+                        <label for="observacionesPago">
+                            Observaciones
+                        </label>
+
+                        <textarea id="observacionesPago" rows="3" maxlength="1000"
+                            placeholder="Observaciones opcionales..."></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeRegistrarPago" class="mensaje-pagos"></div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" id="cancelarRegistrarPago" class="btn-secondary">
+                    Cancelar
+                </button>
+
+
+                <button type="button" id="btnRegistrarPago" class="btn-primary">
+                    Registrar pago
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/sistema_prestamos/frontend/js/tema.js?v=5"></script>
+    <script src="../js/pagos.js?v=2"></script>
+
+</body>
+
+</html>

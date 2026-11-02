@@ -1,0 +1,2016 @@
+/* =========================================================
+   TEMA GLOBAL
+========================================================= */
+
+:root {
+    --bg-principal: #f8fafc;
+    --bg-secundario: #ffffff;
+    --bg-sidebar: #ffffff;
+
+    --texto-principal: #0f172a;
+    --texto-secundario: #64748b;
+
+    --borde: #e2e8f0;
+
+    --hover: #f1f5f9;
+
+    --sombra: rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   MODO OSCURO
+========================================================= */
+
+body.dark-mode {
+
+    --bg-principal: #0f172a;
+    --bg-secundario: #1e293b;
+    --bg-sidebar: #111827;
+
+    --texto-principal: #f8fafc;
+    --texto-secundario: #94a3b8;
+
+    --borde: #334155;
+
+    --hover: #334155;
+
+    --sombra: rgba(0, 0, 0, 0.35);
+
+}
+
+
+/* =========================================================
+   ELEMENTOS GENERALES
+========================================================= */
+
+body {
+    background: var(--bg-principal);
+    color: var(--texto-principal);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+body.dark-mode .sidebar {
+    background: var(--bg-sidebar);
+    border-color: var(--borde);
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+body.dark-mode .topbar {
+    background: var(--bg-secundario);
+    border-color: var(--borde);
+}
+
+
+/* =========================================================
+   TARJETAS / PANELES
+========================================================= */
+
+body.dark-mode .card,
+body.dark-mode .panel {
+    background: var(--bg-secundario);
+    border-color: var(--borde);
+    box-shadow: 0 4px 15px var(--sombra);
+}
+
+
+/* =========================================================
+   TEXTOS
+========================================================= */
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode strong {
+    color: var(--texto-principal);
+}
+
+body.dark-mode p,
+body.dark-mode span {
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   MENÚ LATERAL
+========================================================= */
+
+body.dark-mode .menu-item {
+    color: var(--texto-secundario);
+}
+
+body.dark-mode .menu-item:hover {
+    background: var(--hover);
+    color: var(--texto-principal);
+}
+
+body.dark-mode .menu-item.active {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MENÚ DE USUARIO
+========================================================= */
+
+body.dark-mode .user-info {
+    background: var(--bg-secundario);
+}
+
+body.dark-mode .user-dropdown {
+    background: var(--bg-secundario);
+    border-color: var(--borde);
+}
+
+
+/* =========================================================
+   TABLAS
+========================================================= */
+
+body.dark-mode table {
+    background: var(--bg-secundario);
+    color: var(--texto-principal);
+}
+
+body.dark-mode th {
+    color: var(--texto-principal);
+    border-color: var(--borde);
+}
+
+body.dark-mode td {
+    color: var(--texto-secundario);
+    border-color: var(--borde);
+}
+
+body.dark-mode tbody tr:hover {
+    background: var(--hover);
+}
+
+
+/* =========================================================
+   FORMULARIOS
+========================================================= */
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background: #0f172a;
+    color: #f8fafc;
+    border-color: var(--borde);
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #64748b;
+}
+
+
+/* =========================================================
+   MODALES
+========================================================= */
+
+body.dark-mode .modal-content,
+body.dark-mode .modal-container,
+body.dark-mode .modal-box {
+    background: var(--bg-secundario);
+    color: var(--texto-principal);
+}
+
+
+/* =========================================================
+   BOTÓN GLOBAL DE TEMA
+========================================================= */
+
+.theme-toggle {
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+
+    background: var(--bg-secundario);
+    color: var(--texto-principal);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+.theme-toggle:hover {
+    transform: translateY(-1px);
+    background: var(--hover);
+}
+
+/* =========================================================
+   CLIENTES - MODO OSCURO
+========================================================= */
+
+body.dark-mode .stats-card,
+body.dark-mode .stat-card,
+body.dark-mode .client-card,
+body.dark-mode .clientes-card,
+body.dark-mode .table-container,
+body.dark-mode .table-wrapper,
+body.dark-mode .filters,
+body.dark-mode .search-container,
+body.dark-mode .content-card {
+    background: var(--bg-secundario) !important;
+    color: var(--texto-principal) !important;
+    border-color: var(--borde) !important;
+}
+
+
+/* CONTENEDORES BLANCOS GENERALES */
+
+body.dark-mode .content > div,
+body.dark-mode .panel-content {
+    border-color: var(--borde);
+}
+
+
+/* TEXTOS DE CLIENTES */
+
+body.dark-mode .stats-card span,
+body.dark-mode .stat-card span,
+body.dark-mode .client-card span {
+    color: var(--texto-secundario) !important;
+}
+
+body.dark-mode .stats-card strong,
+body.dark-mode .stat-card strong,
+body.dark-mode .client-card strong {
+    color: var(--texto-principal) !important;
+}
+
+
+/* BUSCADOR */
+
+body.dark-mode .search-box,
+body.dark-mode .search-input {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: var(--borde) !important;
+}
+
+
+/* TABLA DE CLIENTES */
+
+body.dark-mode .table-container,
+body.dark-mode .table-wrapper {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode table {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode thead,
+body.dark-mode tbody,
+body.dark-mode tr {
+    background: transparent;
+}
+
+
+/* FILAS */
+
+body.dark-mode tbody tr {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode tbody tr:hover {
+    background: #293548 !important;
+}
+
+
+/* BOTONES BLANCOS */
+
+body.dark-mode .btn-secondary,
+body.dark-mode .btn-light,
+body.dark-mode .btn-view,
+body.dark-mode .btn-edit,
+body.dark-mode .btn-documents {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode .btn-secondary:hover,
+body.dark-mode .btn-light:hover,
+body.dark-mode .btn-view:hover,
+body.dark-mode .btn-edit:hover,
+body.dark-mode .btn-documents:hover {
+    background: #475569 !important;
+}
+
+/* =========================================================
+   CLIENTES - MODO OSCURO
+========================================================= */
+
+body.dark-mode .resumen-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .resumen-card span {
+    color: var(--texto-secundario) !important;
+}
+
+body.dark-mode .resumen-card strong {
+    color: var(--texto-principal) !important;
+}
+
+
+/* PANEL PRINCIPAL */
+
+body.dark-mode .clientes-panel {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+
+/* TOOLBAR */
+
+body.dark-mode .clientes-toolbar {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+
+/* BUSCADOR */
+
+body.dark-mode .search-box input {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .search-box input::placeholder {
+    color: #94a3b8 !important;
+}
+
+
+/* TABLA */
+
+body.dark-mode .tabla-clientes {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .tabla-clientes th {
+    background: #182235 !important;
+    color: #94a3b8 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-clientes td {
+    color: #cbd5e1 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-clientes tbody tr:hover {
+    background: #293548 !important;
+}
+
+
+/* NOMBRE DEL CLIENTE */
+
+body.dark-mode .cliente-nombre {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .cliente-id,
+body.dark-mode .cliente-contacto small {
+    color: #94a3b8 !important;
+}
+
+
+/* BOTONES DE ACCIÓN */
+
+body.dark-mode .btn-accion {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode .btn-accion:hover {
+    background: #475569 !important;
+}
+
+
+/* MODAL */
+
+body.dark-mode .modal-content {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .form-section {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .form-section h3,
+body.dark-mode .form-group label {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .modal-close {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+
+/* DOCUMENTOS */
+
+body.dark-mode .documento-card {
+    background: #182235 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .documento-info strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .documento-info span,
+body.dark-mode .documento-info small {
+    color: #94a3b8 !important;
+}
+
+/* =========================================================
+   SOLICITUDES - MODO OSCURO
+========================================================= */
+
+body.dark-mode .solicitudes-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .solicitudes-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* RESUMEN */
+
+body.dark-mode .solicitudes-resumen .resumen-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .solicitudes-resumen .resumen-card span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .solicitudes-resumen .resumen-card strong {
+    color: #f8fafc !important;
+}
+
+
+/* PANEL */
+
+body.dark-mode .solicitudes-panel {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .solicitudes-toolbar {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+
+/* BUSCADOR */
+
+body.dark-mode .solicitudes-toolbar input {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .solicitudes-toolbar input::placeholder {
+    color: #94a3b8 !important;
+}
+
+
+/* TABLA */
+
+body.dark-mode .tabla-solicitudes {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .tabla-solicitudes th {
+    background: #182235 !important;
+    color: #94a3b8 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-solicitudes td {
+    color: #cbd5e1 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-solicitudes tbody tr:hover {
+    background: #293548 !important;
+}
+
+body.dark-mode .cliente-nombre,
+body.dark-mode .solicitud-id {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .cliente-correo {
+    color: #94a3b8 !important;
+}
+
+
+/* BOTÓN VER */
+
+body.dark-mode .btn-accion {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode .btn-accion:hover {
+    background: #475569 !important;
+}
+
+
+/* MODALES */
+
+body.dark-mode .modal-content {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer,
+body.dark-mode .form-section {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .modal-header h2,
+body.dark-mode .form-section h3,
+body.dark-mode .form-group label {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-header p,
+body.dark-mode .form-group small {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .modal-close {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+
+/* FORMULARIOS */
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .form-group input[readonly],
+body.dark-mode .form-group textarea[readonly] {
+    background: #182235 !important;
+}
+
+
+/* INFORMACIÓN DEL PRÉSTAMO */
+
+body.dark-mode .info-prestamo {
+    background: #172554 !important;
+    border-color: #1d4ed8 !important;
+    color: #bfdbfe !important;
+}
+
+
+/* BOTÓN SECUNDARIO */
+
+body.dark-mode .btn-secondary {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+/* =========================================================
+   PRESTAMOS - MODO OSCURO
+========================================================= */
+
+body.dark-mode .prestamos-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .prestamos-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* RESUMEN */
+
+body.dark-mode .prestamos-resumen .resumen-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .prestamos-resumen .resumen-card span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .prestamos-resumen .resumen-card strong {
+    color: #f8fafc !important;
+}
+
+
+/* PANEL */
+
+body.dark-mode .prestamos-panel {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .prestamos-toolbar {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+
+/* BUSCADOR */
+
+body.dark-mode .prestamos-toolbar input {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .prestamos-toolbar input::placeholder {
+    color: #94a3b8 !important;
+}
+
+
+/* TABLA */
+
+body.dark-mode .tabla-prestamos {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .tabla-prestamos th {
+    background: #182235 !important;
+    color: #94a3b8 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-prestamos td {
+    color: #cbd5e1 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-prestamos tbody tr:hover {
+    background: #293548 !important;
+}
+
+body.dark-mode .prestamo-id,
+body.dark-mode .cliente-nombre {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .cliente-correo {
+    color: #94a3b8 !important;
+}
+
+
+/* BOTONES */
+
+body.dark-mode .btn-accion,
+body.dark-mode .btn-secondary {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode .btn-accion:hover,
+body.dark-mode .btn-secondary:hover {
+    background: #475569 !important;
+}
+
+
+/* MODAL */
+
+body.dark-mode .modal-content {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer,
+body.dark-mode .form-section {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .modal-header h2,
+body.dark-mode .form-section h3,
+body.dark-mode .form-group label {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-header p,
+body.dark-mode .form-group small {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .modal-close {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+
+/* FORMULARIOS */
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+
+/* INFORMACIÓN DEL PRÉSTAMO */
+
+body.dark-mode .info-prestamo {
+    background: #172554 !important;
+    border-color: #1d4ed8 !important;
+    color: #bfdbfe !important;
+}
+
+/* =========================================================
+   PAGOS - MODO OSCURO
+========================================================= */
+
+body.dark-mode .pagos-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .pagos-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* RESUMEN */
+
+body.dark-mode .pagos-resumen .resumen-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .pagos-resumen .resumen-card span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .pagos-resumen .resumen-card strong {
+    color: #f8fafc !important;
+}
+
+
+/* PANELES */
+
+body.dark-mode .pagos-panel {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .pagos-toolbar {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+
+/* BUSCADOR */
+
+body.dark-mode .pagos-toolbar input {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .pagos-toolbar input::placeholder {
+    color: #94a3b8 !important;
+}
+
+
+/* TABLAS */
+
+body.dark-mode .tabla-pagos {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .tabla-pagos th {
+    background: #182235 !important;
+    color: #94a3b8 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-pagos td {
+    color: #cbd5e1 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-pagos tbody tr:hover {
+    background: #293548 !important;
+}
+
+
+/* HISTORIAL */
+
+body.dark-mode .historial-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .historial-header p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .historial-cliente {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .historial-secundario {
+    color: #94a3b8 !important;
+}
+
+
+/* BOTONES */
+
+body.dark-mode .btn-accion,
+body.dark-mode .btn-secondary {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode .btn-accion:hover,
+body.dark-mode .btn-secondary:hover {
+    background: #475569 !important;
+}
+
+
+/* MODALES */
+
+body.dark-mode .modal-content {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer,
+body.dark-mode .form-section {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .modal-header h2,
+body.dark-mode .form-section h3,
+body.dark-mode .form-group label {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-header p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .modal-close {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+
+/* FORMULARIOS */
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+/* =========================================================
+   MENSAJES - MODO OSCURO
+========================================================= */
+
+/* FONDO PRINCIPAL */
+
+body.dark-mode .main-content,
+body.dark-mode .mensajes-content {
+    background: var(--bg-principal) !important;
+}
+
+
+/* ENCABEZADO */
+
+body.dark-mode .page-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .page-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* TARJETAS DE ESTADÍSTICAS */
+
+body.dark-mode .mensajes-stats .stat-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .stat-card span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .stat-card strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .stat-icon {
+    background: #334155 !important;
+}
+
+
+/* PANELES */
+
+body.dark-mode .mensajes-content .panel {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .panel-header {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .panel-header h3 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .panel-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* BUSCADOR */
+
+body.dark-mode .buscador-container input {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .buscador-container input::placeholder {
+    color: #94a3b8 !important;
+}
+
+
+/* TABLAS */
+
+body.dark-mode .clientes-table,
+body.dark-mode .mensajes-table {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .clientes-table thead,
+body.dark-mode .mensajes-table thead {
+    background: #182235 !important;
+}
+
+body.dark-mode .clientes-table th,
+body.dark-mode .mensajes-table th {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .clientes-table td,
+body.dark-mode .mensajes-table td {
+    color: #cbd5e1 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .clientes-table tbody tr:hover,
+body.dark-mode .mensajes-table tbody tr:hover {
+    background: #293548 !important;
+}
+
+
+/* INFORMACIÓN DEL CLIENTE */
+
+body.dark-mode .cliente-info strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .cliente-info small {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .cliente-avatar-small {
+    background: #334155 !important;
+    color: #93c5fd !important;
+}
+
+
+/* BOTONES */
+
+body.dark-mode .btn-secondary,
+body.dark-mode .btn-ver {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .btn-secondary:hover,
+body.dark-mode .btn-ver:hover {
+    background: #475569 !important;
+}
+
+body.dark-mode .btn-enviar {
+    background: #1e3a5f !important;
+    color: #93c5fd !important;
+}
+
+body.dark-mode .btn-enviar:hover {
+    background: #254b76 !important;
+}
+
+
+/* MODALES */
+
+body.dark-mode .modal-container {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .modal-header {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .modal-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-close {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-close:hover {
+    background: #475569 !important;
+}
+
+
+/* DESTINATARIO */
+
+body.dark-mode .destinatario-card {
+    background: #182235 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .destinatario-card strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .destinatario-card span,
+body.dark-mode .destinatario-card small {
+    color: #94a3b8 !important;
+}
+
+
+/* FORMULARIO */
+
+body.dark-mode .form-group label {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .form-group input::placeholder,
+body.dark-mode .form-group textarea::placeholder {
+    color: #64748b !important;
+}
+
+
+/* DETALLE DEL MENSAJE */
+
+body.dark-mode .detalle-meta div {
+    background: #182235 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .detalle-meta span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .detalle-meta strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .detalle-mensaje {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .detalle-mensaje > span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .detalle-mensaje p {
+    color: #cbd5e1 !important;
+}
+
+/* =========================================================
+   USUARIOS - MODO OSCURO
+========================================================= */
+
+body.dark-mode .usuarios-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .usuarios-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* RESUMEN */
+
+body.dark-mode .usuarios-resumen .resumen-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .usuarios-resumen .resumen-card span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .usuarios-resumen .resumen-card strong {
+    color: #f8fafc !important;
+}
+
+
+/* PANEL */
+
+body.dark-mode .usuarios-panel {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .usuarios-toolbar {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+
+/* BUSCADOR */
+
+body.dark-mode .usuarios-toolbar input {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .usuarios-toolbar input::placeholder {
+    color: #94a3b8 !important;
+}
+
+
+/* TABLA */
+
+body.dark-mode .tabla-usuarios {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .tabla-usuarios th {
+    background: #182235 !important;
+    color: #94a3b8 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-usuarios td {
+    color: #cbd5e1 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-usuarios tbody tr:hover {
+    background: #293548 !important;
+}
+
+body.dark-mode .usuario-nombre {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .usuario-secundario {
+    color: #94a3b8 !important;
+}
+
+
+/* BOTONES */
+
+body.dark-mode .btn-accion,
+body.dark-mode .btn-secondary {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode .btn-accion:hover,
+body.dark-mode .btn-secondary:hover {
+    background: #475569 !important;
+}
+
+
+/* MODALES */
+
+body.dark-mode .modal-content {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer,
+body.dark-mode .form-section {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .modal-header h2,
+body.dark-mode .form-section h3,
+body.dark-mode .form-group label {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-header p,
+body.dark-mode .form-group small {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .modal-close {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-close:hover {
+    background: #475569 !important;
+}
+
+
+/* FORMULARIOS */
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .form-group input[readonly] {
+    background: #182235 !important;
+    color: #cbd5e1 !important;
+}
+
+/* =========================================================
+   REPORTES - MODO OSCURO
+========================================================= */
+
+body.dark-mode .reportes-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .reportes-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* RESUMEN */
+
+body.dark-mode .reportes-resumen .resumen-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .reportes-resumen .resumen-card span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .reportes-resumen .resumen-card strong {
+    color: #f8fafc !important;
+}
+
+
+/* PANELES */
+
+body.dark-mode .reporte-panel {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .reporte-panel-header {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .reporte-panel-header h3 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .reporte-panel-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* ESTADOS */
+
+body.dark-mode .estado-reporte-item {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .estado-reporte-info strong,
+body.dark-mode .estado-reporte-valor strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .estado-reporte-info span,
+body.dark-mode .estado-reporte-valor span {
+    color: #94a3b8 !important;
+}
+
+
+/* FILTROS */
+
+body.dark-mode .filtros-reportes {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .filtro-grupo label {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .filtro-grupo input {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+
+/* RESUMEN DEL RANGO */
+
+body.dark-mode .resumen-rango {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .resumen-rango-item {
+    background: #182235 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .resumen-rango-item span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .resumen-rango-item strong {
+    color: #f8fafc !important;
+}
+
+
+/* TABLAS */
+
+body.dark-mode .tabla-reportes {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .tabla-reportes th {
+    background: #182235 !important;
+    color: #94a3b8 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-reportes td {
+    color: #cbd5e1 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-reportes tbody tr:hover {
+    background: #293548 !important;
+}
+
+/* =========================================================
+   CONFIGURACION - MODO OSCURO
+========================================================= */
+
+body.dark-mode .config-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .config-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* PANELES */
+
+body.dark-mode .config-panel {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .config-panel-header {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .config-panel-header h3 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .config-panel-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* TABLAS */
+
+body.dark-mode .tabla-config {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .tabla-config th {
+    background: #182235 !important;
+    color: #94a3b8 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-config td {
+    color: #cbd5e1 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-config tbody tr:hover {
+    background: #293548 !important;
+}
+
+
+/* LISTAS DE ESTADOS */
+
+body.dark-mode .lista-estados {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .estado-config-item {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .estado-config-info strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .estado-config-info span {
+    color: #94a3b8 !important;
+}
+
+
+/* BOTONES */
+
+body.dark-mode .btn-accion,
+body.dark-mode .btn-secondary {
+    background: #334155 !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode .btn-accion:hover,
+body.dark-mode .btn-secondary:hover {
+    background: #475569 !important;
+}
+
+
+/* MODALES */
+
+body.dark-mode .modal-content {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .modal-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-header p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .modal-close {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-close:hover {
+    background: #475569 !important;
+}
+
+
+/* FORMULARIOS */
+
+body.dark-mode .form-group label {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+/* =========================================================
+   PORTAL CLIENTE - MODO OSCURO
+========================================================= */
+
+/* FONDO GENERAL */
+
+body.dark-mode,
+body.dark-mode .cliente-main,
+body.dark-mode .cliente-contenido {
+    background: var(--bg-principal) !important;
+}
+
+
+/* TOPBAR */
+
+body.dark-mode .cliente-topbar {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .cliente-topbar h1 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .cliente-topbar p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .cliente-usuario strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .cliente-usuario span {
+    color: #94a3b8 !important;
+}
+
+
+/* SELECTOR DE PRÉSTAMO */
+
+body.dark-mode .selector-prestamo-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .selector-label {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .selector-prestamo-card strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .selector-prestamo-card select {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+
+/* RESUMEN */
+
+body.dark-mode .resumen-grid .resumen-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .resumen-grid .resumen-card span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .resumen-grid .resumen-card strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .resumen-icon {
+    background: #334155 !important;
+}
+
+
+/* PANELES */
+
+body.dark-mode .panel-cliente {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .panel-header {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .panel-header h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .panel-header p {
+    color: #94a3b8 !important;
+}
+
+
+/* PROGRESO */
+
+body.dark-mode .barra-progreso {
+    background: #334155 !important;
+}
+
+body.dark-mode .progreso-datos > div {
+    background: #182235 !important;
+}
+
+body.dark-mode .progreso-datos span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .progreso-datos strong {
+    color: #f8fafc !important;
+}
+
+
+/* PRÓXIMA CUOTA */
+
+body.dark-mode .proxima-cuota > div {
+    background: #182235 !important;
+}
+
+body.dark-mode .proxima-cuota span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .proxima-cuota strong {
+    color: #f8fafc !important;
+}
+
+
+/* DETALLE DEL PRÉSTAMO */
+
+body.dark-mode .detalle-item {
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .detalle-item span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .detalle-item strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .detalle-item.destacado {
+    background: #172554 !important;
+}
+
+body.dark-mode .detalle-item.destacado strong {
+    color: #93c5fd !important;
+}
+
+
+/* TABLAS */
+
+body.dark-mode .tabla-cliente {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .tabla-cliente th {
+    background: #182235 !important;
+    color: #94a3b8 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-cliente td {
+    color: #cbd5e1 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .tabla-cliente tbody tr:hover {
+    background: #293548 !important;
+}
+
+
+/* SIN PRÉSTAMOS */
+
+body.dark-mode .sin-prestamos {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .sin-prestamos h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .sin-prestamos p {
+    color: #94a3b8 !important;
+}
+
+
+/* MENSAJES DEL CLIENTE */
+
+body.dark-mode .mensajes-resumen-cliente {
+    background: #182235 !important;
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .mensajes-resumen-cliente strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .mensaje-cliente-card {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .mensaje-cliente-card.no-leido {
+    background: #182235 !important;
+}
+
+body.dark-mode .mensaje-cliente-cabecera:hover {
+    background: #293548 !important;
+}
+
+body.dark-mode .mensaje-cliente-titulo strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .mensaje-cliente-info p,
+body.dark-mode .mensaje-cliente-info small {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .mensaje-cliente-contenido {
+    background: #182235 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .mensaje-cliente-texto {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .mensaje-cliente-footer {
+    color: #94a3b8 !important;
+}
+
+
+/* MENÚ DE PERFIL */
+
+body.dark-mode .cliente-dropdown {
+    background: var(--bg-secundario) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .cliente-dropdown button {
+    color: #f8fafc;
+}
+
+body.dark-mode .cliente-dropdown button:hover {
+    background: #334155 !important;
+}
+
+body.dark-mode #btnCerrarSesionPerfil {
+    color: #f87171 !important;
+}
+
+
+/* MODAL DE PERFIL */
+
+body.dark-mode .modal-perfil-contenido {
+    background: var(--bg-secundario) !important;
+}
+
+body.dark-mode .modal-perfil-header h2,
+body.dark-mode .perfil-nombre strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .modal-perfil-header p,
+body.dark-mode .perfil-nombre span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .btn-cerrar-perfil {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .btn-cerrar-perfil:hover {
+    background: #475569 !important;
+}
+
+body.dark-mode .perfil-dato {
+    background: #182235 !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .perfil-dato span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .perfil-dato strong {
+    color: #f8fafc !important;
+}
+
+
+/* CAMBIAR CONTRASEÑA */
+
+body.dark-mode #formCambiarPassword input {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode #formCambiarPassword .perfil-dato span {
+    color: #94a3b8 !important;
+}
+
+/* =========================================================
+   BADGES GLOBALES - MODO OSCURO
+========================================================= */
+
+/* VERDE - ACTIVO / APROBADO / PAGADO / CONFIRMADO */
+
+body.dark-mode .estado-activo,
+body.dark-mode .estatus-activo,
+body.dark-mode .estado-aprobada,
+body.dark-mode .estado-aprobado,
+body.dark-mode .estado-pagada,
+body.dark-mode .estado-confirmado,
+body.dark-mode .estado-liquidado,
+body.dark-mode .badge-activo {
+    background: #14532d !important;
+    color: #dcfce7 !important;
+    border: 1px solid #22c55e !important;
+}
+
+
+/* AMARILLO - PENDIENTE */
+
+body.dark-mode .estado-pendiente,
+body.dark-mode .estatus-pendiente {
+    background: #713f12 !important;
+    color: #fef3c7 !important;
+    border: 1px solid #eab308 !important;
+}
+
+
+/* ROJO - RECHAZADO / BLOQUEADO / VENCIDO / CANCELADO */
+
+body.dark-mode .estado-rechazada,
+body.dark-mode .estado-rechazado,
+body.dark-mode .estado-vencida,
+body.dark-mode .estado-atrasado,
+body.dark-mode .estado-cancelado,
+body.dark-mode .estatus-bloqueado {
+    background: #7f1d1d !important;
+    color: #fee2e2 !important;
+    border: 1px solid #ef4444 !important;
+}
+
+
+/* NARANJA - PARCIAL */
+
+body.dark-mode .estado-parcial {
+    background: #7c2d12 !important;
+    color: #ffedd5 !important;
+    border: 1px solid #f97316 !important;
+}
+
+
+/* AZUL - ADMINISTRADOR / LIQUIDADO */
+
+body.dark-mode .rol-administrador {
+    background: #1e3a8a !important;
+    color: #dbeafe !important;
+    border: 1px solid #3b82f6 !important;
+}
+
+
+/* MORADO - GERENTE */
+
+body.dark-mode .rol-gerente {
+    background: #4c1d95 !important;
+    color: #ede9fe !important;
+    border: 1px solid #8b5cf6 !important;
+}
+
+
+/* GRIS - CLIENTE / INACTIVO */
+
+body.dark-mode .rol-cliente,
+body.dark-mode .estatus-inactivo {
+    background: #334155 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #64748b !important;
+}
+
+
+/* MENSAJES LEÍDOS */
+
+body.dark-mode .badge-leido {
+    background: #1e3a8a !important;
+    color: #dbeafe !important;
+    border: 1px solid #3b82f6 !important;
+}
+
+
+/* MENSAJES NO LEÍDOS */
+
+body.dark-mode .badge-no-leido,
+body.dark-mode .mensaje-nuevo-badge {
+    background: #713f12 !important;
+    color: #fef3c7 !important;
+    border: 1px solid #eab308 !important;
+}
+
+/* =========================================================
+   ACTIVIDAD RECIENTE - MODO OSCURO
+========================================================= */
+
+body.dark-mode .actividad-item strong,
+body.dark-mode .actividad-info strong,
+body.dark-mode .actividad-monto strong {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .actividad-item p,
+body.dark-mode .actividad-item small,
+body.dark-mode .actividad-info span,
+body.dark-mode .actividad-info small {
+    color: #94a3b8 !important;
+}
+
+/* Monto */
+body.dark-mode .actividad-monto,
+body.dark-mode .actividad-monto strong {
+    color: #f8fafc !important;
+}
+
+/* Separadores */
+body.dark-mode .actividad-item {
+    border-color: #334155 !important;
+}
+
+/* =========================================================
+   ACTIVIDAD RECIENTE - DASHBOARD
+========================================================= */
+
+.actividad-nombre,
+.actividad-monto {
+    color: #0f172a;
+}
+
+body.dark-mode .actividad-nombre,
+body.dark-mode .actividad-monto {
+    color: #f8fafc !important;
+}

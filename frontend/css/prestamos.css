@@ -1,0 +1,551 @@
+/* ============================================================
+   ENCABEZADO
+============================================================ */
+
+.prestamos-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.prestamos-header h2 {
+    margin: 0 0 4px;
+    color: #0f172a;
+    font-size: 22px;
+}
+
+.prestamos-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   RESUMEN
+============================================================ */
+
+.prestamos-resumen {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.resumen-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.resumen-card span {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.resumen-card strong {
+    color: #0f172a;
+    font-size: 23px;
+}
+
+
+/* ============================================================
+   PANEL
+============================================================ */
+
+.prestamos-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.prestamos-toolbar {
+    padding: 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.prestamos-toolbar input {
+    width: 430px;
+    max-width: 100%;
+    height: 40px;
+
+    padding: 0 13px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+
+    outline: none;
+}
+
+.prestamos-toolbar input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* ============================================================
+   TABLA
+============================================================ */
+
+.tabla-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-prestamos {
+    width: 100%;
+    min-width: 1150px;
+
+    border-collapse: collapse;
+}
+
+.tabla-prestamos th {
+    padding: 12px 13px;
+
+    text-align: left;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-prestamos td {
+    padding: 13px;
+
+    color: #334155;
+
+    font-size: 12px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-prestamos tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.prestamo-id {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.cliente-nombre {
+    display: block;
+
+    color: #0f172a;
+
+    font-weight: 600;
+}
+
+.cliente-correo {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.tabla-cargando,
+.tabla-vacia {
+    padding: 40px !important;
+
+    text-align: center !important;
+
+    color: #64748b !important;
+}
+
+
+/* ============================================================
+   ESTADOS
+============================================================ */
+
+.estado-prestamo {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.estado-pendiente {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.estado-activo {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.estado-atrasado {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.estado-liquidado {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.estado-cancelado {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+
+/* ============================================================
+   BOTONES
+============================================================ */
+
+.btn-primary,
+.btn-secondary,
+.btn-accion {
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.btn-primary {
+    padding: 10px 16px;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+.btn-secondary {
+    padding: 10px 16px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    border: 1px solid #cbd5e1;
+}
+
+.btn-accion {
+    padding: 6px 10px;
+
+    border: 1px solid #cbd5e1;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-size: 11px;
+}
+
+.btn-accion:hover {
+    background: #f8fafc;
+}
+
+
+/* ============================================================
+   MODAL
+============================================================ */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.62);
+}
+
+.modal-content {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 900px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 25px 60px rgba(15, 23, 42, 0.25);
+}
+
+.modal-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h2 {
+    margin: 0 0 4px;
+
+    color: #0f172a;
+
+    font-size: 20px;
+}
+
+.modal-header p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.modal-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+.modal-footer {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 18px 22px;
+
+    border-top: 1px solid #e2e8f0;
+}
+
+
+/* ============================================================
+   FORMULARIOS
+============================================================ */
+
+.form-section {
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.form-section h3 {
+    margin: 0 0 15px;
+
+    color: #334155;
+
+    font-size: 14px;
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: #475569;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 10px 12px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #0f172a;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+.form-group input 
+.form-group select {
+    height: 42px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* ============================================================
+   MENSAJES
+============================================================ */
+
+.mensaje-prestamos {
+    display: none;
+}
+
+.mensaje-prestamos.error,
+.mensaje-prestamos.exito {
+    display: block;
+
+    margin: 14px 15px;
+
+    padding: 11px 13px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+}
+
+.mensaje-prestamos.error {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+.mensaje-prestamos.exito {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1000px) {
+
+    .prestamos-resumen {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .prestamos-resumen {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group-full {
+        grid-column: auto;
+    }
+
+}
+
+.form-group small {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.info-prestamo {
+    margin: 0 0 18px;
+    padding: 12px 14px;
+
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+
+    background: #eff6ff;
+
+    color: #1e40af;
+
+    font-size: 12px;
+}
+
+#tablaCuotasBody td {
+    white-space: nowrap;
+}

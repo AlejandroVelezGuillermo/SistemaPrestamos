@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Configuración | Sistema de Préstamos</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css?v=2">
+
+    <link rel="stylesheet" href="../css/configuracion.css">
+    <link rel="stylesheet" href="../css/tema.css?v=16">
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="logo">
+                    $
+                </div>
+
+                <div>
+                    <h2>Préstamos</h2>
+                    <span>Sistema de gestión</span>
+                </div>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <p class="menu-title">
+                    PRINCIPAL
+                </p>
+
+                <a href="dashboard.html" class="menu-item">
+                    <span>📊</span>
+                    Dashboard
+                </a>
+
+
+                <p class="menu-title">
+                    GESTIÓN
+                </p>
+
+                <a href="clientes.html" class="menu-item">
+                    <span>👥</span>
+                    Clientes
+                </a>
+
+                <a href="solicitudes.html" class="menu-item">
+                    <span>📝</span>
+                    Solicitudes
+                </a>
+
+                <a href="prestamos.html" class="menu-item">
+                    <span>💰</span>
+                    Préstamos
+                </a>
+
+                <a href="pagos.html" class="menu-item">
+                    <span>💵</span>
+                    Pagos
+                </a>
+
+                <a href="mensajes.html" class="menu-item">
+                    <span>✉️</span>
+                    Mensajes
+                </a>
+
+
+                <p class="menu-title">
+                    ADMINISTRACIÓN
+                </p>
+
+                <a href="usuarios.html" class="menu-item">
+                    <span>👤</span>
+                    Usuarios
+                </a>
+
+                <a href="reportes.html" class="menu-item">
+                    <span>📈</span>
+                    Reportes
+                </a>
+
+                <a href="configuracion.html" class="menu-item active">
+                    <span>⚙️</span>
+                    Configuración
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- =========================================================
+         CONTENIDO
+    ========================================================== -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>
+                        Configuración
+                    </h1>
+
+                    <p>
+                        Administración de catálogos del sistema
+                    </p>
+
+                </div>
+
+
+                <div class="user-info user-info-menu" id="usuarioMenu">
+
+                    <button type="button" class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <div class="user-avatar" id="avatarUsuario">
+                        A
+                    </div>
+
+                    <div class="user-data">
+
+                        <strong id="nombreUsuario">
+                            Cargando...
+                        </strong>
+
+                        <span id="rolUsuario">
+                            Cargando...
+                        </span>
+
+                    </div>
+
+                    <span class="user-menu-flecha">
+                        ▼
+                    </span>
+
+                    <div class="user-dropdown" id="usuarioDropdown">
+
+                        <button type="button" id="logoutButtonPerfil">
+                            <span>🚪</span>
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="content">
+
+                <!-- =================================================
+                 TIPOS DE PRÉSTAMO
+            ================================================== -->
+
+                <div class="config-header">
+
+                    <div>
+
+                        <h2>
+                            Tipos de préstamo
+                        </h2>
+
+                        <p>
+                            Administra montos, plazos y disponibilidad.
+                        </p>
+
+                    </div>
+
+
+                    <button type="button" id="btnNuevoTipoPrestamo" class="btn-primary">
+                        + Nuevo tipo
+                    </button>
+
+                </div>
+
+
+                <div class="config-panel">
+
+                    <div class="tabla-container">
+
+                        <table class="tabla-config">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Monto mínimo</th>
+                                    <th>Monto máximo</th>
+                                    <th>Plazo</th>
+                                    <th>Estatus</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaTiposPrestamoBody">
+
+                                <tr>
+
+                                    <td colspan="7" class="tabla-cargando">
+                                        Cargando tipos de préstamo...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 MÉTODOS DE PAGO
+            ================================================== -->
+
+                <div class="config-header config-separador">
+
+                    <div>
+
+                        <h2>
+                            Métodos de pago
+                        </h2>
+
+                        <p>
+                            Administra las formas disponibles para registrar pagos.
+                        </p>
+
+                    </div>
+
+
+                    <button type="button" id="btnNuevoMetodoPago" class="btn-primary">
+                        + Nuevo método
+                    </button>
+
+                </div>
+
+
+                <div class="config-panel">
+
+                    <div class="tabla-container">
+
+                        <table class="tabla-config">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Estatus</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaMetodosPagoBody">
+
+                                <tr>
+
+                                    <td colspan="5" class="tabla-cargando">
+                                        Cargando métodos de pago...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                 ESTADOS
+            ================================================== -->
+
+                <div class="config-grid config-separador">
+
+                    <div class="config-panel">
+
+                        <div class="config-panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Estados de préstamo
+                                </h3>
+
+                                <p>
+                                    Catálogo utilizado por el flujo de préstamos.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="listaEstadosPrestamo" class="lista-estados">
+                            Cargando...
+                        </div>
+
+                    </div>
+
+
+                    <div class="config-panel">
+
+                        <div class="config-panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Estados de solicitud
+                                </h3>
+
+                                <p>
+                                    Catálogo utilizado por el flujo de solicitudes.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="listaEstadosSolicitud" class="lista-estados">
+                            Cargando...
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeConfiguracion" class="mensaje-configuracion"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL TIPO DE PRÉSTAMO
+============================================================== -->
+
+    <div id="modalTipoPrestamo" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2 id="tituloModalTipoPrestamo">
+                        Nuevo tipo de préstamo
+                    </h2>
+
+                    <p id="subtituloModalTipoPrestamo">
+                        Configura sus límites y disponibilidad.
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalTipoPrestamo" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="form-grid">
+
+                    <div class="form-group form-group-full">
+
+                        <label for="tipoPrestamoNombre">
+                            Nombre *
+                        </label>
+
+                        <input id="tipoPrestamoNombre" type="text" maxlength="100">
+
+                    </div>
+
+
+                    <div class="form-group form-group-full">
+
+                        <label for="tipoPrestamoDescripcion">
+                            Descripción
+                        </label>
+
+                        <textarea id="tipoPrestamoDescripcion" rows="3"></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tipoPrestamoMontoMinimo">
+                            Monto mínimo *
+                        </label>
+
+                        <input id="tipoPrestamoMontoMinimo" type="number" min="0" step="0.01">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tipoPrestamoMontoMaximo">
+                            Monto máximo *
+                        </label>
+
+                        <input id="tipoPrestamoMontoMaximo" type="number" min="0" step="0.01">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tipoPrestamoPlazoMinimo">
+                            Plazo mínimo (meses) *
+                        </label>
+
+                        <input id="tipoPrestamoPlazoMinimo" type="number" min="1" step="1">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tipoPrestamoPlazoMaximo">
+                            Plazo máximo (meses) *
+                        </label>
+
+                        <input id="tipoPrestamoPlazoMaximo" type="number" min="1" step="1">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tipoPrestamoEstatus">
+                            Estatus *
+                        </label>
+
+                        <select id="tipoPrestamoEstatus">
+
+                            <option value="activo">
+                                Activo
+                            </option>
+
+                            <option value="inactivo">
+                                Inactivo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeTipoPrestamo" class="mensaje-configuracion"></div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" id="cancelarTipoPrestamo" class="btn-secondary">
+                    Cancelar
+                </button>
+
+
+                <button type="button" id="guardarTipoPrestamo" class="btn-primary">
+                    Guardar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================================
+     MODAL MÉTODO DE PAGO
+============================================================== -->
+
+    <div id="modalMetodoPago" class="modal">
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content modal-pequeno">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2 id="tituloModalMetodoPago">
+                        Nuevo método de pago
+                    </h2>
+
+                    <p id="subtituloModalMetodoPago">
+                        Configura una forma de pago.
+                    </p>
+
+                </div>
+
+
+                <button type="button" id="cerrarModalMetodoPago" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="form-grid">
+
+                    <div class="form-group form-group-full">
+
+                        <label for="metodoPagoNombre">
+                            Nombre *
+                        </label>
+
+                        <input id="metodoPagoNombre" type="text" maxlength="100">
+
+                    </div>
+
+
+                    <div class="form-group form-group-full">
+
+                        <label for="metodoPagoDescripcion">
+                            Descripción
+                        </label>
+
+                        <textarea id="metodoPagoDescripcion" rows="3"></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="metodoPagoEstatus">
+                            Estatus *
+                        </label>
+
+                        <select id="metodoPagoEstatus">
+
+                            <option value="activo">
+                                Activo
+                            </option>
+
+                            <option value="inactivo">
+                                Inactivo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div id="mensajeMetodoPago" class="mensaje-configuracion"></div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" id="cancelarMetodoPago" class="btn-secondary">
+                    Cancelar
+                </button>
+
+
+                <button type="button" id="guardarMetodoPago" class="btn-primary">
+                    Guardar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/sistema_prestamos/frontend/js/tema.js?v=5"></script>
+    <script src="../js/configuracion.js?v=2"></script>
+
+</body>
+
+</html>

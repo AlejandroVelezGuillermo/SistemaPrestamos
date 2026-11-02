@@ -1,0 +1,633 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f8fafc;
+
+    color: #0f172a;
+}
+
+
+.app {
+    min-height: 100vh;
+
+    display: flex;
+}
+
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+
+.sidebar {
+    width: 250px;
+
+    min-height: 100vh;
+
+    background: #0f172a;
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+
+.sidebar-header {
+    height: 85px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border-bottom: 1px solid #1e293b;
+}
+
+
+.logo {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #2563eb;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.sidebar-header h2 {
+    font-size: 17px;
+}
+
+
+.sidebar-header span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+.menu {
+    padding: 20px 12px;
+
+    flex: 1;
+
+    overflow-y: auto;
+}
+
+
+.menu-title {
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    margin: 12px 10px 8px;
+}
+
+
+.menu-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    margin-bottom: 4px;
+
+    border-radius: 8px;
+
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+
+.menu-item span {
+    width: 22px;
+
+    text-align: center;
+}
+
+
+.menu-item:hover {
+    background: #1e293b;
+
+    color: white;
+}
+
+
+.menu-item.active {
+    background: #2563eb;
+
+    color: white;
+}
+
+
+.sidebar-footer {
+    padding: 15px;
+
+    border-top: 1px solid #1e293b;
+}
+
+
+.logout-button {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #cbd5e1;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.logout-button:hover {
+    background: #1e293b;
+
+    color: white;
+}
+
+
+/* ============================================================
+   MAIN
+============================================================ */
+
+.main {
+    width: calc(100% - 250px);
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+}
+
+
+.topbar {
+    min-height: 85px;
+
+    padding: 20px 30px;
+
+    background: white;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.topbar h1 {
+    font-size: 24px;
+}
+
+
+.topbar p {
+    margin-top: 5px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.user-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+
+.user-data strong {
+    display: block;
+
+    font-size: 14px;
+}
+
+
+.user-data span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    text-transform: capitalize;
+}
+
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.content {
+    padding: 30px;
+}
+
+
+.welcome {
+    margin-bottom: 25px;
+}
+
+
+.welcome h2 {
+    font-size: 21px;
+
+    margin-bottom: 7px;
+}
+
+
+.welcome p {
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   CARDS
+============================================================ */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+.card {
+    background: white;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.card-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #eff6ff;
+
+    font-size: 20px;
+}
+
+
+.card span {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+
+.card strong {
+    display: block;
+
+    font-size: 21px;
+}
+
+
+/* ============================================================
+   PANEL
+============================================================ */
+
+.panel {
+    background: white;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+
+.panel-header {
+    padding: 20px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+
+.panel-header h3 {
+    font-size: 16px;
+}
+
+
+.panel-header p {
+    color: #64748b;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+
+.empty-state {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    color: #64748b;
+}
+
+
+.empty-state > div {
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+
+.empty-state h4 {
+    color: #334155;
+
+    margin-bottom: 7px;
+}
+
+
+.empty-state p {
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1100px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+
+    .sidebar-header {
+        justify-content: center;
+
+        padding: 10px;
+    }
+
+
+    .sidebar-header > div:last-child {
+        display: none;
+    }
+
+
+    .menu-item {
+        justify-content: center;
+
+        font-size: 0;
+    }
+
+
+    .menu-item span {
+        font-size: 18px;
+    }
+
+
+    .menu-title {
+        display: none;
+    }
+
+
+    .logout-button {
+        text-align: center;
+
+        font-size: 0;
+    }
+
+
+    .logout-button span {
+        font-size: 18px;
+    }
+
+
+    .main {
+        width: calc(100% - 70px);
+
+        margin-left: 70px;
+    }
+
+
+    .topbar {
+        padding: 15px;
+    }
+
+
+    .user-data {
+        display: none;
+    }
+
+
+    .content {
+        padding: 15px;
+    }
+
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================================
+   MENÚ DE USUARIO - ADMINISTRADOR / GERENTE
+========================================================= */
+
+.user-info-menu {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+/* FLECHA */
+
+.user-menu-flecha {
+    margin-left: 8px;
+    font-size: 11px;
+    color: #64748b;
+    transition: transform 0.2s ease;
+}
+
+.user-info-menu.activo .user-menu-flecha {
+    transform: rotate(180deg);
+}
+
+
+/* MENÚ DESPLEGABLE */
+
+.user-dropdown {
+    position: absolute;
+
+    top: calc(100% + 12px);
+    right: 0;
+
+    width: 200px;
+
+    padding: 8px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+    z-index: 1000;
+
+    display: none;
+}
+
+
+/* MOSTRAR MENÚ */
+
+.user-info-menu.activo .user-dropdown {
+    display: block;
+}
+
+
+/* BOTÓN */
+
+.user-dropdown button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #dc2626;
+
+    font-size: 14px;
+    font-family: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.user-dropdown button:hover {
+    background: #fef2f2;
+    color: #b91c1c;
+}
